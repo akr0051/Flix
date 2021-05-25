@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MainView } from './components/main-view/main-view';
 import './index.scss';
 
-class MyFlixApplication extends React.Component{
+class FlixApplication extends React.Component{
     render(){
         return (
-            <div className="Flix">
-                <div>Good morning</div>
-            </div>
+            <MainView/>
         );
     }
 }
 
 const container = document.getElementsByClassName('app-container')[0];
 
-ReactDOM.render(React.createElement(MyFlixApplication), container);
+ReactDOM.render(React.createElement(FlixApplication), container);
