@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button'
 import './movie-view.scss'
 import { Card } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+
 
 export class MovieView extends React.Component{
 
     render() {
-        const { movie, onGenreClick, onDirectorClick, onBackClick } = this.props;
+        const { movie } = this.props;
 
         return (
             <Card>
@@ -15,13 +17,18 @@ export class MovieView extends React.Component{
                 <Card.Body>
                     <Card.Title>{movie.Title}</Card.Title>
                     <Card.Text>{movie.Description}</Card.Text>
-                    <Link to={`/genres/$/${movie.Genre.Name}`}>
+                    <Link to={`/genres/${movie.Genre.Name}`}>
                         <Button variant="link">Genre</Button>
                     </Link>
                     <Link to={`/directors/${movie.Director.Name}`}>
                         <Button variant="link">Director</Button>
                     </Link>
-                    <Button onClick={() => onBackClick(null)} variant="link">Back</Button>
+                    <Link to={'movies/${movie._id'}>
+                        <Button variant="link" onClick={() => this.handleAdd(movie)} >Add to Favorites</Button>
+                    </Link>
+                    <Link to={'/'}>
+                        <Button variant="link">Back</Button>
+                    </Link>
                 </Card.Body>      
             </Card>
         )
@@ -51,7 +58,4 @@ MovieView.propTypes = {
         Description: PropTypes.string.isRequired,
         ImagePath: PropTypes.string.isRequired,
     }).isRequired,
-    onBackClick: PropTypes.func.isRequired,
-    onDirectorClick: PropTypes.func.isRequired,
-    onGenreClick: PropTypes.func.isRequired
 }

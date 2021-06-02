@@ -6,16 +6,16 @@ import './director-view.scss';
 
 export class DirectorView extends React.Component {
     render () {
-        const { director, onMovieClick } = this.props;
+        const { director, onBackClick } = this.props;
 
         return(
             <Card>
                 <Card.Body>
                     <Card.Title>{director.Name}</Card.Title>
+                    <Card.Text>Born: {director.Birth}</Card.Text>
+                    <Card.Text>Died: {director.Death}</Card.Text>
                     <Card.Text>{director.Bio}</Card.Text>
-                    <Card.Text>{director.Birth}</Card.Text>
-                    <Card.Text>{director.Death}</Card.Text>
-                    <Button onClick={() => onMovieClick(movie)} variant="link">Back</Button>
+                    <Button onClick={()=>onBackClick()} variant="link">Back</Button>
                 </Card.Body>
             </Card>
         )
@@ -24,14 +24,13 @@ export class DirectorView extends React.Component {
     }
 }
 
-DirectorView.PropTypes = {
+DirectorView.propTypes = {
     Director: PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-        Bio: PropTypes.string.isRequired,
-        Birth: PropTypes.string.isRequired,
+        Name: PropTypes.string,
+        Bio: PropTypes.string,
+        Birth: PropTypes.string,
         Death: PropTypes.string,
     }).isRequired,
-    onMovieClick: PropTypes.func.isRequired
 }
 
 
