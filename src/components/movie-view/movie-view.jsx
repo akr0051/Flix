@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 import './movie-view.scss'
 import { Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
@@ -8,6 +9,22 @@ import { Link } from "react-router-dom";
 
 export class MovieView extends React.Component{
 
+    handleAdd = (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+
+        axios.post('https://flix0051.herokuapp.com/users/:Username/Movies/:MovieId',{},{
+            headers: {Authorization: `Bearer ${token}`}
+        })
+        .then(response => {
+            alert("Movie has been added to favorites.")
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    
     render() {
         const { movie } = this.props;
 

@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { setMovies } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
-import { MovieCard } from '../movie-card/movie-card';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import './main-view.scss';
@@ -69,9 +69,10 @@ class MainView extends React.Component{
         let{ user } = this.state;
         console.log(movies); 
 
-        <button onClick={() => { this.onLoggedOut() }}>Logout</button>
+        <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
 
         return (
+            
             <Router>
                 <Row className="main-view justify content-md-center">
                     <Route exact path="/" render={() => {
@@ -111,7 +112,7 @@ class MainView extends React.Component{
                         </Col>
                     }} />
                 </Row>
-            </Router>
+            </Router>   
             );
     }
         

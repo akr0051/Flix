@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import './login-view.scss';
@@ -21,7 +22,7 @@ export function LoginView(props) {
             props.onLoggedIn(data);
         })
         .catch(e => {
-            console.log('no such loser')
+            console.log('no such user')
         });
     };
 
@@ -37,7 +38,9 @@ export function LoginView(props) {
                 <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e =>setPassword(e.target.value)} />
             </Form.Group>
             <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
-            <Button variant="primary" type="link" >Register</Button>
+            <Link to={`/register`}>
+                <Button variant="primary" type="link" >Register</Button>
+            </Link>
         </Form>
     );
     
