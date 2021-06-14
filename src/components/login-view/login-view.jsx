@@ -22,6 +22,7 @@ export function LoginView(props) {
             props.onLoggedIn(data);
         })
         .catch(e => {
+            alert('Username or Password Incorrect')
             console.log('no such user')
         });
     };

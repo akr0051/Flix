@@ -9,17 +9,21 @@ export class MovieCard extends React.Component {
     render(){
         const { movie } = this.props;
 
+            <Link to={'/users'}>
+                <Button variant="link">My Profile</Button>
+            </Link>
+       
         return (
-            <Card>
-                <Card.Img variant="top" src={movie.ImagePath} />
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Descriptiopn}</Card.Text>
-                    <Link to={`/movies/${movie._id}`}>
-                        <Button variant="link">Open</Button>
-                    </Link>    
-                </Card.Body>
-            </Card>
+        <Card>
+            <Card.Img variant="top" src={movie.ImagePath} />
+            <Card.Body>
+                <Card.Title>{movie.Title}</Card.Title>
+                <Card.Text>{movie.Descriptiopn}</Card.Text>
+                <Link to={`/movies/${movie._id}`}>
+                    <Button variant="link">Open</Button>
+                </Link>    
+            </Card.Body>
+        </Card>
         )
         
         /* return (
@@ -36,3 +40,9 @@ MovieCard.propTypes = {
     }).isRequired,
 
 };
+
+
+
+                  
+            
+

@@ -4,13 +4,12 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import './movie-view.scss'
 import { Card } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 
 export class MovieView extends React.Component{
 
-    handleAdd = (e) => {
-        e.preventDefault();
+    handleAdd () {
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
 
@@ -29,6 +28,7 @@ export class MovieView extends React.Component{
         const { movie } = this.props;
 
         return (
+        
             <Card>
                 <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Body>
@@ -48,6 +48,7 @@ export class MovieView extends React.Component{
                     </Link>
                 </Card.Body>      
             </Card>
+            
         )
         
         /* return (
@@ -70,9 +71,9 @@ export class MovieView extends React.Component{
 }
 
 MovieView.propTypes = {
-    movie:PropTypes.shape({
-        Title: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-        ImagePath: PropTypes.string.isRequired,
-    }).isRequired,
+    movie: PropTypes.shape({
+        Title: PropTypes.string,
+        Description: PropTypes.string,
+        ImagePath: PropTypes.string,
+    }),
 }

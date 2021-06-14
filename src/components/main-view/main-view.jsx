@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import { setMovies } from '../../actions/actions';
+import { setMovies, setProfile } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button'
@@ -12,6 +12,7 @@ import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view'
 import './main-view.scss';
 
 class MainView extends React.Component{
@@ -28,16 +29,34 @@ class MainView extends React.Component{
         console.log(accessToken)
         if (accessToken !== null) {
             this.setState({
-                user:localStorage.getItem ('user')
+                user:localStorage.getItem('user')
             });
             this.getMovies(accessToken);
         }
     }    
 
+    getUser(token) {
+        const url = "https://flix0051.herokuapp.com/users/" + localStorage.getItem('user');
+        axios.get(url, { headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(response => {
+            this.setState({
+                Username: response.data.Username,
+                Password: response.data.Password,
+                Email: response.data.Email,
+                Birthday: response.data.Birthday,
+                FavoriteMovies: response.data.FavoriteMovies
+            });
+        })
+        .catch(function (error){
+            console.log(error);
+        });
+    }
+    
     onLoggedIn(authData) {
         console.log(authData);
         this.setState({
-            user: authData.user.Username
+            user: authData.user
         });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
@@ -69,11 +88,11 @@ class MainView extends React.Component{
         let{ user } = this.state;
         console.log(movies); 
 
-        <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
-
         return (
             
             <Router>
+                <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
+
                 <Row className="main-view justify content-md-center">
                     <Route exact path="/" render={() => {
                         console.log("login", user, !user)
@@ -105,6 +124,11 @@ class MainView extends React.Component{
                         </Col>
                     }} />
 
+                    <Route path ="/users" render={({ match, history }) => {
+                        if (!user) return <div className="main-view"/>
+                        return <ProfileView user={user} movies={movies} />
+                    }} />
+
                     <Route path="/genres/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="mainview" />;
                         return <Col md={8}>
@@ -119,7 +143,10 @@ class MainView extends React.Component{
 }
 
 let mapStateToProps = state => {
-    return { movies: state.movies}
+    return {
+        movies: state.movies,
+        user: state.user
+    }
 }
         
-export default connect(mapStateToProps, { setMovies } ) (MainView);
+export default connect(mapStateToProps, { setMovies, setProfile } ) (MainView);

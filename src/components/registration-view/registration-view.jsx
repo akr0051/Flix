@@ -2,22 +2,20 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import './registration-view.scss';
 import axios from 'axios';
 
-export function RegistrationView(props) {
+export function RegistrationView() {
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('');
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log (username, password, email, birthday)
-    }
-
-    axios.post('https://flix0051.herokuapp.com/users',{
+        axios.post('https://flix0051.herokuapp.com/users',{
         Username: username,
         Password: password,
         Email: email,
@@ -31,6 +29,9 @@ export function RegistrationView(props) {
     .catch(e => {
         console.log('error registering the user')
     });
+
+        console.log (username, password, email, birthday)
+    }
 
     return (
         <Form>
@@ -53,6 +54,9 @@ export function RegistrationView(props) {
             <Button variant="primary" type="submit" onClick={handleSubmit} >
                 Register
             </Button>
+            <Link to={'/'}>
+                <Button variant="primary">Back to Login</Button>
+            </Link>
         </Form>
     )
     
