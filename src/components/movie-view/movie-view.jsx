@@ -9,20 +9,21 @@ import { Link } from 'react-router-dom';
 
 export class MovieView extends React.Component{
 
-    handleAdd () {
+    addFavorite(movie) {
         const token = localStorage.getItem('token');
-        const user = localStorage.getItem('user');
+        const url = 'https://flix0051.herokuapp.com/users/' + localStorage.getItem('user') + '/Movies/' + movie._id;
 
-        axios.post('https://flix0051.herokuapp.com/users/:Username/Movies/:MovieId',{},{
+        axios.post(url, "", {
             headers: {Authorization: `Bearer ${token}`}
         })
         .then(response => {
-            alert("Movie has been added to favorites.")
+            alert("Movie has been added to favorites.");
         })
         .catch(function (error) {
             console.log(error);
-        });
-    }
+        })
+    }    
+    
     
     render() {
         const { movie } = this.props;
@@ -40,9 +41,7 @@ export class MovieView extends React.Component{
                     <Link to={`/directors/${movie.Director.Name}`}>
                         <Button variant="link">Director</Button>
                     </Link>
-                    <Link to={'movies/${movie._id'}>
-                        <Button variant="link" onClick={() => this.handleAdd(movie)} >Add to Favorites</Button>
-                    </Link>
+                    <Button variant="link" onClick={() => this.addFavorite(movie)} >Add to Favorites</Button>
                     <Link to={'/'}>
                         <Button variant="link">Back</Button>
                     </Link>
@@ -72,8 +71,9 @@ export class MovieView extends React.Component{
 
 MovieView.propTypes = {
     movie: PropTypes.shape({
-        Title: PropTypes.string,
-        Description: PropTypes.string,
-        ImagePath: PropTypes.string,
+        Title: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string.isRequired,
     }),
 }
+

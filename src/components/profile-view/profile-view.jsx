@@ -5,7 +5,8 @@ import Button from 'react-bootstrap/Button';
 import { Card, Container, Form } from 'react-bootstrap';
 import './profile-view.scss';
 import { connect } from 'react-redux';
-import { setProfile } from '../../actions/actions'
+import { setProfile } from '../../actions/actions';
+import { Link } from 'react-router-dom';
 
 export class ProfileView extends React.Component{
 
@@ -20,23 +21,28 @@ export class ProfileView extends React.Component{
         }
     }
     
-    // componentDidMount() {
-    //     let accessToken = localStorage.getItem('token');
-    //     this.getUser(accessToken);
-    // }
+    componentDidMount() {
+        let accessToken = localStorage.getItem('token');
+        console.log(accessToken)
+        
+    }
     
     handleUpdate(e) {
         e.preventDefault();
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
+        const url = 'https://flix0051.herokuapp.com/users/';
 
-        axios.put('https://flix0051.herokuapp.com/users/:Username',{
-            Username: this.state.Username,
-            Password: this.state.Password,
-            Email: this.state.Email,
-            Birthday: this.state.Birthday},
-            {headers: {Authorization: `Bearer ${token}`}}
-        )
+        axios.put(url + user, {
+            headers: { Authorization: `Bearer ${token}` },
+            
+            data: {
+                Username: this.state.Username,
+                Password: this.state.Password,
+                Email: this.state.Email,
+                Birthday: this.state.Birthday,
+            },
+        })
         .then(response => {
             const data = response.data;
             localStorage.setItem('user', data.Username);
@@ -47,35 +53,40 @@ export class ProfileView extends React.Component{
         });    
     }
 
-    handleDeregister(e) {
+    deregister(e) {
         e.preventDefault();
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
+        const url = 'https://flix0051.herokuapp.com/users/';
 
-        axios.delete('https://flix0051.herokuapp.com/users/:Username',
-            {headers: {Authorization: `Bearer ${token}`}}
-        )
-        .then(response => {
-            alert('Profile Deleted')
-            localStorage.removeItem('user');
-            localStorage.removeItem('token');
-        })
-        .catch(function (error) {
-            console.log(error);
+        axios.delete(url + user, {
+            headers: { Authorization: `Bearer ${token}` },
+            })
+            .then( () => {
+                localStorage.clear();
+                setProfile({
+                user: null,
+                token: null
+                });
+                alert('Your account has been deleted!');
+                window.open('/', '_self');
+            })
+            .catch(function (error) {
+                console.log(error);
         });
     }
 
-    handleRemoveFavorite(movie) {
-        e.preventDefault();
+    removeFavorite(movie) {
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
+        const url = 'https://flix0051.herokuapp.com/users/';
 
-        axios.delete('https://flix0051.herokuapp.com/users/:Username/movies/:MovieId',
-            {headers: {Authorization: `Bear ${token}`}}
+        axios.delete(url + user + '/Movies/' + movie._id, {
+            headers: {Authorization: `Bearer ${token}` }}
         )
-        .then(response => {
-            this.componentDidMount();
-            alert('Movie Removed From Favorites')
+        .then( () => {
+            alert('Movie Removed From Favorites');
+            this.componentDidMount;
         })
         .catch(function(error) {
             console.log(error);
@@ -84,9 +95,9 @@ export class ProfileView extends React.Component{
     
     render() {
         const { movies, user } = this.props;
-        const userFavoriteMovies = user.favoriteMovies;
+        console.log("render profile view", this.props);
         const favoriteMoviesList = movies.filter((movie) => {
-            return this.state.userFavoriteMovies.includes(movie._id)
+            return user.FavoriteMovies.includes(movie._id)
         });
         const token = localStorage.getItem('token');
 
@@ -96,17 +107,26 @@ export class ProfileView extends React.Component{
                     {favoriteMoviesList.map((movie) => {
                         return(
                             <Card>
+                                <Card.Img variant="top" src={movie.ImagePath} />
                                 <Card.Body>
-                                    <Card.Text>Username: {user.Username} </Card.Text>
-                                    <Card.Text>Email: {user.Email} </Card.Text>
-                                    <Card.Text>Birthday: {user.Birthday} </Card.Text>
-                                    <Button onClick={(e) => this.handleDeregister(e)} variant="submit" className='delete-button'>Delete Account</Button>
+                                    <Card.Title>{movie.Title}</Card.Title>
+                                    <Link to={`/movies/${movie._id}`}>
+                                        <Button variant="link">Open</Button>
+                                    </Link>    
                                 </Card.Body>
+                                <Button variant="link" onClick={() => this.removeFavorite(movie)} >Remove from Favorites</Button>
                             </Card>
+                            
                         )})}
+                          
             <Container>
                 <Card>
+                    <Card.Title>User</Card.Title>
                     <Card.Body>
+                        <Card.Text>Username: {user.Username} </Card.Text>
+                        <Card.Text>Email: {user.Email} </Card.Text>
+                        <Card.Text>Birthday: {user.Birthday} </Card.Text>
+                    </Card.Body>
                         <Form>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
@@ -124,40 +144,25 @@ export class ProfileView extends React.Component{
                                 <Form.Label>Birthday</Form.Label>
                                 <Form.Control type="text" placeholder="New Birthday"></Form.Control>
                             </Form.Group>
-                            <Button className="profile-button" type="submit">Update Profile</Button>
+                            <Button className="profile-button" onClick={(e) => this.handleUpdate(e)} type="submit">Update Profile</Button>
+                            <Button onClick={(e) => this.deregister(e)} variant="submit" className='delete-button'>Delete Account</Button>
                         </Form>    
-                    </Card.Body>
+                    
                 </Card>
-            <Container>
-                <Card>
-                    <Card.Img variant="top" src={movie.ImagePath} />
-                    <Card.Body>
-                        <Card.Title>{movie.Title}</Card.Title>
-                        <Link to={`/movies/${movie._id}`}>
-                            <Button variant="link">Open</Button>
-                        </Link>    
-                    </Card.Body>
-                </Card>
-            </Container>    
             </Container>
             </Container>
         )
     }
 }
 
-// ProfileView.propTypes = {
-//     user: PropTypes.shape( {
-//         Username: PropTypes.string,
-//         Password: PropTypes.string,
-//         Email: PropTypes.string,
-//         Birthday: PropTypes.string,
-//         FavoriteMovies: PropTypes.arrayOf(
-//             PropTypes.shape({
-//                 _id: PropTypes.string
-//             })
-//         )
-//     })
-// }
+ProfileView.propTypes = {
+    user: PropTypes.shape( {
+        Username: PropTypes.string.isRequired,
+        Password: PropTypes.string,
+        Email: PropTypes.string,
+        Birthday: PropTypes.string,
+    })
+}
 
 let mapStateToProps = state => {
     return{

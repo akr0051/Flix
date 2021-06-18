@@ -28,9 +28,8 @@ class MainView extends React.Component{
         let accessToken = localStorage.getItem('token');
         console.log(accessToken)
         if (accessToken !== null) {
-            this.setState({
-                user:localStorage.getItem('user')
-            });
+            
+            this.getUser(accessToken);
             this.getMovies(accessToken);
         }
     }    
@@ -41,11 +40,7 @@ class MainView extends React.Component{
         })
         .then(response => {
             this.setState({
-                Username: response.data.Username,
-                Password: response.data.Password,
-                Email: response.data.Email,
-                Birthday: response.data.Birthday,
-                FavoriteMovies: response.data.FavoriteMovies
+                user: response.data
             });
         })
         .catch(function (error){
@@ -85,7 +80,7 @@ class MainView extends React.Component{
 
     render() {
         let { movies } = this.props;
-        let{ user } = this.state;
+        let { user } = this.state;
         console.log(movies); 
 
         return (
