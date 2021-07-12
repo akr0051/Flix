@@ -10,22 +10,22 @@ import { Link } from 'react-router-dom';
 
 export class ProfileView extends React.Component{
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            Username: null,
-            Password: null,
-            Email: null,
-            Birthday: null,
-            FavoriteMovies: [],
-        }
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         Username: null,
+    //         Password: null,
+    //         Email: null,
+    //         Birthday: null,
+    //         FavoriteMovies: [],
+    //     }
+    // }
     
-    componentDidMount() {
-        let accessToken = localStorage.getItem('token');
-        console.log(accessToken)
+    // componentDidMount() {
+    //     let accessToken = localStorage.getItem('token');
+    //     console.log(accessToken)
         
-    }
+    // }
     
     handleUpdate(e) {
         e.preventDefault();
@@ -33,19 +33,31 @@ export class ProfileView extends React.Component{
         const user = localStorage.getItem('user');
         const url = 'https://flix0051.herokuapp.com/users/';
 
-        axios.put(url + user, {
-            headers: { Authorization: `Bearer ${token}` },
-            
-            data: {
-                Username: this.state.Username,
-                Password: this.state.Password,
-                Email: this.state.Email,
-                Birthday: this.state.Birthday,
+        console.log('Update', e.target);
+        
+        const form = e.target;
+        const username = e.target[0].value;
+        const password = e.target[1].value;
+        const email = e.target[2].value;
+        const birthday = e.target[3].value;
+
+        console.log("Update", {username, password})
+
+        axios.put(
+            url + user, 
+            {
+                Username: username,
+                Password: password,
+                Email: email,
+                Birthday: birthday,
             },
+            {
+                headers: { Authorization: `Bearer ${token}` },
         })
         .then(response => {
             const data = response.data;
             localStorage.setItem('user', data.Username);
+            this.props.setProfile(data);
             alert("Changes Updated")
         })
         .catch(function (error) {
@@ -64,10 +76,7 @@ export class ProfileView extends React.Component{
             })
             .then( () => {
                 localStorage.clear();
-                setProfile({
-                user: null,
-                token: null
-                });
+                this.props.setProfile(null);
                 alert('Your account has been deleted!');
                 window.open('/', '_self');
             })
@@ -84,9 +93,10 @@ export class ProfileView extends React.Component{
         axios.delete(url + user + '/Movies/' + movie._id, {
             headers: {Authorization: `Bearer ${token}` }}
         )
-        .then( () => {
+        .then( (response) => {
             alert('Movie Removed From Favorites');
-            this.componentDidMount;
+            console.log('Remove', this.props.setProfile, response.data);
+            this.props.setProfile(response.data);
         })
         .catch(function(error) {
             console.log(error);
@@ -99,7 +109,7 @@ export class ProfileView extends React.Component{
         const favoriteMoviesList = movies.filter((movie) => {
             return user.FavoriteMovies.includes(movie._id)
         });
-        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('token');
 
         return (
             <Container>
@@ -127,7 +137,7 @@ export class ProfileView extends React.Component{
                         <Card.Text>Email: {user.Email} </Card.Text>
                         <Card.Text>Birthday: {user.Birthday} </Card.Text>
                     </Card.Body>
-                        <Form>
+                        <Form onSubmit={e => this.handleUpdate(e)}>
                             <Form.Group>
                                 <Form.Label>Username</Form.Label>
                                 <Form.Control type="text" placeholder="New Username" ></Form.Control>

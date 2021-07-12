@@ -12,7 +12,7 @@ import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { ProfileView } from '../profile-view/profile-view'
+import ProfileView from '../profile-view/profile-view';
 import './main-view.scss';
 
 class MainView extends React.Component{
@@ -39,9 +39,11 @@ class MainView extends React.Component{
         axios.get(url, { headers: { Authorization: `Bearer ${token}` }
         })
         .then(response => {
-            this.setState({
-                user: response.data
-            });
+                this.props.setProfile(response.data);
+                this.setState({
+                    user: response.data
+                });
+                console.log('getUser', response.data)
         })
         .catch(function (error){
             console.log(error);
@@ -50,6 +52,7 @@ class MainView extends React.Component{
     
     onLoggedIn(authData) {
         console.log(authData);
+        this.props.setProfile(authData);
         this.setState({
             user: authData.user
         });
