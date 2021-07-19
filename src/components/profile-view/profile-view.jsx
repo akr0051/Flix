@@ -9,23 +9,6 @@ import { setProfile } from '../../actions/actions';
 import { Link } from 'react-router-dom';
 
 export class ProfileView extends React.Component{
-
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         Username: null,
-    //         Password: null,
-    //         Email: null,
-    //         Birthday: null,
-    //         FavoriteMovies: [],
-    //     }
-    // }
-    
-    // componentDidMount() {
-    //     let accessToken = localStorage.getItem('token');
-    //     console.log(accessToken)
-        
-    // }
     
     handleUpdate(e) {
         e.preventDefault();
@@ -106,10 +89,12 @@ export class ProfileView extends React.Component{
     render() {
         const { movies, user } = this.props;
         console.log("render profile view", this.props);
+
+        if (movies.length === 0 || !user) return <div>Loading...</div>
+
         const favoriteMoviesList = movies.filter((movie) => {
             return user.FavoriteMovies.includes(movie._id)
         });
-        // const token = localStorage.getItem('token');
 
         return (
             <Container>
@@ -124,7 +109,7 @@ export class ProfileView extends React.Component{
                                         <Button variant="link">Open</Button>
                                     </Link>    
                                 </Card.Body>
-                                <Button variant="link" onClick={() => this.removeFavorite(movie)} >Remove from Favorites</Button>
+                                <Button variant="link" onClick={() => this.removeFavorite(movie)} >Remove From Favorites</Button>
                             </Card>
                             
                         )})}
@@ -154,7 +139,7 @@ export class ProfileView extends React.Component{
                                 <Form.Label>Birthday</Form.Label>
                                 <Form.Control type="text" placeholder="New Birthday"></Form.Control>
                             </Form.Group>
-                            <Button className="profile-button" onClick={(e) => this.handleUpdate(e)} type="submit">Update Profile</Button>
+                            <Button className="profile-button" type="submit">Update Profile</Button>
                             <Button onClick={(e) => this.deregister(e)} variant="submit" className='delete-button'>Delete Account</Button>
                         </Form>    
                     
@@ -167,7 +152,7 @@ export class ProfileView extends React.Component{
 
 ProfileView.propTypes = {
     user: PropTypes.shape( {
-        Username: PropTypes.string.isRequired,
+        Username: PropTypes.string,
         Password: PropTypes.string,
         Email: PropTypes.string,
         Birthday: PropTypes.string,

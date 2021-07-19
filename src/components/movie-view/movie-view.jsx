@@ -5,6 +5,8 @@ import axios from 'axios';
 import './movie-view.scss'
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setProfile } from '../../actions/actions';
 
 
 export class MovieView extends React.Component{
@@ -18,6 +20,7 @@ export class MovieView extends React.Component{
         })
         .then(response => {
             alert("Movie has been added to favorites.");
+            this.props.setProfile(response.data);
         })
         .catch(function (error) {
             console.log(error);
@@ -77,3 +80,4 @@ MovieView.propTypes = {
     }),
 }
 
+export default connect( { setProfile })(MovieView)

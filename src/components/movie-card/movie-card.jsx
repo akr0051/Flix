@@ -16,20 +16,18 @@ export class MovieCard extends React.Component {
         return (
             
         <Card>
-            <Card.Img variant="top" src={movie.ImagePath} />
+            
             <Card.Body>
                 <Card.Title>{movie.Title}</Card.Title>
+                <Card.Img variant="top" src={movie.ImagePath} />
                 <Card.Text>{movie.Descriptiopn}</Card.Text>
                 <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">Open</Button>
+                    <Button variant="link">Read More</Button>
                 </Link>    
             </Card.Body>
         </Card>
         )
-        
-        /* return (
-            <div onClick={() => onMovieClick(movie) } className="movie-card">{movie.Title}</div>
-        ); */
+     
     }   
 }
 

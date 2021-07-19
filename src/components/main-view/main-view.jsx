@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { setMovies, setProfile } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list.jsx';
@@ -40,12 +41,10 @@ class MainView extends React.Component{
         })
         .then(response => {
                 this.props.setProfile(response.data);
-                this.setState({
-                    user: response.data
-                });
                 console.log('getUser', response.data)
         })
         .catch(function (error){
+            alert("Error. Try again.");
             console.log(error);
         });
     }
@@ -53,9 +52,6 @@ class MainView extends React.Component{
     onLoggedIn(authData) {
         console.log(authData);
         this.props.setProfile(authData);
-        this.setState({
-            user: authData.user
-        });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
         this.getMovies(authData.token);
@@ -64,9 +60,9 @@ class MainView extends React.Component{
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.setState({
-            user: null
-        });
+        this.props.setProfile(null);
+        window.open('/', '_self');
+        
     }
 
     getMovies(token) {
@@ -82,14 +78,15 @@ class MainView extends React.Component{
     }
 
     render() {
-        let { movies } = this.props;
-        let { user } = this.state;
+        let { movies, user } = this.props;
         console.log(movies); 
 
         return (
             
             <Router>
                 <Button onClick={() => { this.onLoggedOut() }}>Logout</Button>
+
+                <Link to= "/users">My Profile</Link>
 
                 <Row className="main-view justify content-md-center">
                     <Route exact path="/" render={() => {
