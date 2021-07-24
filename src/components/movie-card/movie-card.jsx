@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Modal } from '../modal/modal';
+import { ModalLink } from 'react-router-modal-gallery';
 import './movie-card.scss'
 
 export class MovieCard extends React.Component {
@@ -23,8 +24,9 @@ export class MovieCard extends React.Component {
                 <Card.Text>{movie.Descriptiopn}</Card.Text>
                 <Link to={`/movies/${movie._id}`}>
                     <Button variant="link">Read More</Button>
-                </Link>    
-            </Card.Body>
+                </Link>
+                <ModalLink to= {`/movies/${movie._id}`}>{movie.Title}</ModalLink>
+            </Card.Body>    
         </Card>
         )
      
@@ -40,8 +42,6 @@ MovieCard.propTypes = {
 
 };
 
-
-
-                  
+ 
             
 

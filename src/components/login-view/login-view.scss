@@ -1,41 +1,58 @@
-// .logon-block {
-//     background-color: #1E2127;
-//     font-family: Archivo;
-//     width: 430px;
-//     height: 501px;
-// }
 
-// .form-control {
-//     font-size: 15px;
-//     color: #1E2127;
-//     width: 285px;
-// }
+.logon-block {
+    background-color: #1E2127;
+    font-family: Archivo;
+    width: 430px;
+    height: 501px;
+    margin: auto;
+}
 
-// .form-label {
-//     color: #BEC2CC;
-//     font-size: 15px;
+.password-form {
+    font-size: 15px;
+    color: #1E2127;
+    width: 285px !important;
+    height: 24px !important;
+    margin-left: 48px;
+}
+
+.username-form {
+    font-size: 15px;
+    color: #1E2127;
+    width: 285px !important;
+    height: 24px !important;
+    margin-left: 48px;
+}
+
+.form-label {
+    color: #BEC2CC;
+    font-size: 15px;
+   
+}
+
+.header {
+    color: #FFFFFF;
+    padding-top: 45px;
+    text-align: center;
     
-// }
+}
 
-// .header {
-//     color: #FFFFFF
-// }
+.title {
+    font-size: 38px;
+    color: #FFFFFF;
+}
 
-// .title {
-//     font-size: 38px;
-//     text-align: center;
-// }
+.subtitle {
+    font-size: 15px;
+    color: #828D99;
+}
 
-// .subtitle {
-//     font-size: 15px;
-//     color: #828D99;
-//     text-align: center;
-// }
+.login-btn {
+    width: 124px;;
+}
 
-// .logon-btn {
-//     width: 24px;;
-// }
+.register-btn {
+    width: 334px !important;
+    
+}
 
-// .register-btn {
-//     width: 334px;
-// }
+

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_FILTER, SET_MOVIES, SET_PROFILE } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES, SET_PROFILE, SET_HIDEMODAL, SET_OPENMODAL } from '../actions/actions';
 
 function visibilityFilter(state = '', action) {
     switch (action.type) {
@@ -27,10 +27,23 @@ function user(state = '', action){
             return state;
     }
 }
+
+function modal(state = null, action) {
+    switch (action.type) {
+        case SET_OPENMODAL:
+            return action.value;
+        case SET_HIDEMODAL:
+            return null
+        default:
+            return state;    
+    }
+}
+
 const moviesApp = combineReducers({
     visibilityFilter,
     movies,
-    user
+    user,
+    modal
 });
 
 export default moviesApp;

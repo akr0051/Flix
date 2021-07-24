@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { HiOutlineMail } from 'react-icons/hi';
+import { BiLockAlt } from 'react-icons/bi';
 import axios from 'axios';
 import './login-view.scss';
 
@@ -29,7 +31,9 @@ export function LoginView(props) {
 
     return (
         
-        <Form className="logon-block">
+        
+        <Form>
+            <div className="logon-block">
             <div className="header">
                 <h1 className="title">Great to meet you!</h1>
                 <h5 className="subtitle">Log into your account</h5>
@@ -37,17 +41,26 @@ export function LoginView(props) {
             
             <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                <Form.Control type="text" placeholder="Enter your username" value={username} onChange={e =>setUsername(e.target.value) } />
+                <div>
+                    <Form.Control className="username-form" type="text" placeholder="Enter your username" value={username} onChange={e =>setUsername(e.target.value) } /><HiOutlineMail color="white"/>
+                </div>
             </Form.Group>
 
             <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
-                <Form.Control type="password" placeholder="Enter your password" value={password} onChange={e =>setPassword(e.target.value)} />
+                <div>
+                    <Form.Control className="password-form" type="password" placeholder="Enter your password" value={password} onChange={e =>setPassword(e.target.value)} /><BiLockAlt color="white" />
+                </div>
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>Logon</Button>
+                <div class="col-md-11 text-right">
+                    <Button className="login-btn" variant="primary" type="submit" onClick={handleSubmit}>Logon</Button>
+                </div>
             <Link to={`/register`}>
-                <Button className="register-btn" variant="primary" type="link" >Register</Button>
+                <div class="col-md-12 text-center">
+                    <Button className="register-btn" variant="primary" type="link" >Register</Button>
+                </div>
             </Link>
+            </div>
         </Form>
     );
 }
