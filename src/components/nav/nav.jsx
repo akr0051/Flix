@@ -23,7 +23,7 @@ export class NavView extends React.Component {
 
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="d-flex">
-      <Navbar.Brand as={Link} to={"/"}>MyFlix
+      <Navbar.Brand as={Link} to={"/"}>Flix
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
