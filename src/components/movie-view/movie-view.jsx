@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import './movie-view.scss'
-import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setProfile } from '../../actions/actions';
@@ -33,23 +31,23 @@ export class MovieView extends React.Component{
 
         return (
         
-            <Card>
-                <Card.Img variant="top" src={movie.ImagePath} />
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Description}</Card.Text>
+            <div class="card">
+                <div variant="top" src={movie.ImagePath} />
+                
+                    <div>{movie.Title}</div>
+                    <div>{movie.Description}</div>
                     <Link to={`/genres/${movie.Genre.Name}`}>
-                        <Button variant="link">Genre</Button>
+                        <button variant="link">Genre</button>
                     </Link>
                     <Link to={`/directors/${movie.Director.Name}`}>
-                        <Button variant="link">Director</Button>
+                        <button variant="link">Director</button>
                     </Link>
-                    <Button variant="link" onClick={() => this.addFavorite(movie)} >Add to Favorites</Button>
+                    <button variant="link" onClick={() => this.addFavorite(movie)} >Add to Favorites</button>
                     <Link to={'/'}>
-                        <Button variant="link">Back</Button>
+                        <button variant="link">Back</button>
                     </Link>
-                </Card.Body>      
-            </Card>
+                    
+                </div>
             
         )
        

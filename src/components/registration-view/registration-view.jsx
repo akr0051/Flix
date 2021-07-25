@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import './registration-view.scss';
 import { HiOutlineMail } from 'react-icons/hi'
 import { BiLockAlt } from 'react-icons/bi';
@@ -29,39 +27,38 @@ export function RegistrationView() {
         window.open('/', '_self');
     })
     .catch(e => {
-        console.log('error registering the user')
+        alert('Error registering')
     });
 
-        console.log (username, password, email, birthday)
     }
 
     return (
-        <Form className="reg-block">
+        <form className="reg-block">
             <div className="title">Great to meet you!</div>
             <div className="subtitle">Create an account</div>
-            <Form.Group controlId="formUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control placeholder="me@google.com" type="text" onChange={e =>setUsername(e.target.value)} /><BsPerson color="white" class="d-inline-block btn float-right"/>
-            </Form.Group>
-            <Form.Group controlId="formEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control placeholder="me@google.com" type="text" onChange={e =>setEmail(e.target.value)} /><HiOutlineMail color="white"/>
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control placeholder="Enter your password" type="text" onChange={e =>setPassword(e.target.value)} /><BiLockAlt color="white"/>
-            </Form.Group>
-            <Form.Group controlId="formPassword">
-                <Form.Control placeholder="Enter your password again" type="text" onChange={e =>setPassword(e.target.value)} />
-            </Form.Group>
-            {/* <Form.Group controlId="formBirthday">
-                <Form.Label>Birthday</Form.Label>
-                <Form.Control placeholder="Enter your birthday" type="text" onChange={e =>setBirthday(e.target.value)} />
-            </Form.Group> */}
-            <Button className="register-btn" variant="primary" type="submit" onClick={handleSubmit} >
+            <div controlId="formUsername">
+                <div>Username</div>
+                <div placeholder="me@google.com" type="text" onChange={e =>setUsername(e.target.value)} /><BsPerson color="white" class="d-inline-block btn float-right"/>
+            </div>
+            <div controlId="formEmail">
+                <div>Email</div>
+                <div placeholder="me@google.com" type="text" onChange={e =>setEmail(e.target.value)} /><HiOutlineMail color="white"/>
+            </div>
+            <div controlId="formPassword">
+                <div>Password</div>
+                <div placeholder="Enter your password" type="text" onChange={e =>setPassword(e.target.value)} /><BiLockAlt color="white"/>
+            </div>
+            <div controlId="formPassword">
+                <div placeholder="Enter your password again" type="text" onChange={e =>setPassword(e.target.value)} />
+            </div>
+            {/* <div controlId="formBirthday">
+                <div>Birthday</div>
+                <div placeholder="Enter your birthday" type="text" onChange={e =>setBirthday(e.target.value)} />
+            </div> */}
+            <button className="register-btn" variant="primary" type="submit" onClick={handleSubmit} >
                 Register
-            </Button>
-        </Form>
+            </button>
+        </form>
     )
     
 }

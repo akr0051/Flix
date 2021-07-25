@@ -1,19 +1,13 @@
-html, body {
-     background-color: #0376E3    ;
- }
+body {
+    background-color: #0376E3 !important;
+}
 
- .btn {
-     background-color: #0093FF;
-     font-size: 15px;
-     height: 36px;
- }
-
- header {
-     font-family: Archivo;
-     font-size: 20px;
-     color: #0376E3;
-     width: 178 px;
-     height: 30px;
-     padding-top: 13px;
-     padding-left: 31px;
- }
+#index-title {
+    font-size: 20px;
+    font-family: Archivo;
+    color: #FFFFFF;
+    height: 30px;
+    width: 178px;
+    padding-left: 31px;
+    padding-top: 13px;
+}

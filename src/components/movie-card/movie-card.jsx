@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Modal } from '../modal/modal';
 import { ModalLink } from 'react-router-modal-gallery';
@@ -11,23 +10,23 @@ export class MovieCard extends React.Component {
         const { movie } = this.props;
 
             <Link to={'/users'}>
-                <Button variant="link">My Profile</Button>
+                <button variant="link">My Profile</button>
             </Link>
        
         return (
             
-        <Card>
+        <div class="card">
             
-            <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
-                <Card.Img variant="top" src={movie.ImagePath} />
-                <Card.Text>{movie.Descriptiopn}</Card.Text>
+            
+                <div>{movie.Title}</div>
+                <img variant="top" src={movie.ImagePath} />
+                <div>{movie.Descriptiopn}</div>
                 <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">Read More</Button>
+                    <button variant="link">Read More</button>
                 </Link>
                 <ModalLink to= {`/movies/${movie._id}`}>{movie.Title}</ModalLink>
-            </Card.Body>    
-        </Card>
+            
+        </div>
         )
      
     }   

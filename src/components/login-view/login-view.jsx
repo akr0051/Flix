@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BiLockAlt } from 'react-icons/bi';
 import axios from 'axios';
 import './login-view.scss';
-
 
 export function LoginView(props) {
     const [ username, setUsername ] = useState('');
@@ -25,43 +22,43 @@ export function LoginView(props) {
         })
         .catch(e => {
             alert('Username or Password Incorrect')
-            console.log('no such user')
         });
     };
 
     return (
-        
-        
-        <Form>
-            <div className="logon-block">
-            <div className="header">
+        <div >
+            <form className="login-form">
                 <h1 className="title">Great to meet you!</h1>
-                <h5 className="subtitle">Log into your account</h5>
-            </div>
-            
-            <Form.Group controlId="formUsername">
-                <Form.Label>Username:</Form.Label>
-                <div>
-                    <Form.Control className="username-form" type="text" placeholder="Enter your username" value={username} onChange={e =>setUsername(e.target.value) } /><HiOutlineMail color="white"/>
+                <h1 className="subtitle">Log into your account</h1>
+                <div className="input-label">
+                    <label>Email</label>
                 </div>
-            </Form.Group>
-
-            <Form.Group controlId="formPassword">
-                <Form.Label>Password:</Form.Label>
-                <div>
-                    <Form.Control className="password-form" type="password" placeholder="Enter your password" value={password} onChange={e =>setPassword(e.target.value)} /><BiLockAlt color="white" />
+                <div className="input-control-box">
+                    
+                        <input className="input-control" type="email" name="email" placeholder="me@google.com" onChange={e =>setUsername(e.target.value) } />
+                    
+                    <HiOutlineMail className="icon-padding" color="white"/>
                 </div>
-            </Form.Group>
-                <div class="col-md-11 text-right">
-                    <Button className="login-btn" variant="primary" type="submit" onClick={handleSubmit}>Logon</Button>
+                <div className="input-label">
+                    <label className="password-label">Password</label>
                 </div>
+                <div className="input-control-box">
+                    
+                        <input className="input-control" type="password" name="password" placeholder="Enter your password" onChange={e =>setPassword(e.target.value)} />
+                
+                    <BiLockAlt className="icon-padding" color="white"/>
+                </div>
+                <div className="button-alignment">
+                <button className="standard-btn" type="submit" onClick={handleSubmit}>Login</button>
+                
             <Link to={`/register`}>
-                <div class="col-md-12 text-center">
-                    <Button className="register-btn" variant="primary" type="link" >Register</Button>
+                <div>
+                    <button className="register-btn" type="button" >Register</button>
                 </div>
             </Link>
             </div>
-        </Form>
+            </form>
+        </div>    
     );
 }
 

@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card'
 import './genre-view.scss';
 
 export class GenreView extends React.Component {
@@ -10,13 +8,11 @@ export class GenreView extends React.Component {
         console.log(genre);
 
         return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>{genre.Name}</Card.Title>
-                    <Card.Text>{genre.Description}</Card.Text>
-                    <Button onClick={()=>onBackClick()} variant="link">Back</Button>
-                </Card.Body>
-            </Card>
+            <div class="card">
+                    <div>{genre.Name}</div>
+                    <div>{genre.Description}</div>
+                    <button onClick={()=>onBackClick()} variant="link">Back</button>
+            </div>
         )
     }
 }

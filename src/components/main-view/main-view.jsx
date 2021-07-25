@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { ModalSwitch, ModalRoute, ModalLink } from 'react-router-modal-gallery';
 import { setMovies, setProfile } from '../../actions/actions';
+import Container from '@material-ui/core/Container';
 import MoviesList from '../movies-list/movies-list.jsx';
-import { Container, Row, Col } from 'react-bootstrap';
 import { NavView } from '../nav/nav';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
@@ -106,62 +106,63 @@ class MainView extends React.Component{
     </Modal>
   )}
 >
-                <Row className="main-view justify content-md-center">
+                <div className="main-view">
                     
                     <Route exact path="/" render={() => {
                         console.log("login", user, !user)
                         if (!user) return (
                         <Container>
-                            <Row>
-                                <Col className="p-0">
+                            <div>
+                                <div className="p-0">
                                     <NavView user={user} />
-                                </Col>
-                            </Row>
-                        <Col>
+                                </div>
+                            </div>
+                        <div>
                         <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                        </Col>
+                        </div>
                         </Container>)
                         return <MoviesList movies={movies}/>
                     }} />
 
                     <Route path="/register" render={() => {
                     if (user) return <Redirect to="/" />
-                    return <Col>
+                    return <div>
                         <RegistrationView />
-                    </Col>
+                    </div>
                     }} />
 
                     <Route path="/movies/:movieId" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return (
                         <Container>
-                            <Row>
-                                <Col className="p-0">
+                            <div>
+                                <div className="p-0">
                                     <NavView user={user} />
-                                </Col>
-                            </Row>
+                                </div>
+                            </div>
                             
-                            <Col md={8}>
+                            <div md={8}>
                                 {<MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />}
-                            </Col> 
-                      </Container>);
+                            </div> 
+                      </Container>
+                      );
                     }} />
 
                     <Route path="/directors/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return (
                         <Container>
-                            <Row>
-                                <Col className="p-0">
+                            <div>
+                                <div className="p-0">
                                     <NavView user={user} />
-                                </Col>
+                                </div>
                                 
 
                             
-                            </Row>
-                            <Col md={8}>
+                            </div>
+                            <div md={8}>
                                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
-                            </Col>
+                            </div>
                         </Container>
                         )
                     }} />
@@ -170,11 +171,11 @@ class MainView extends React.Component{
                         if (!user) return <div className="main-view"/>
                         return (
                             <Container>
-                                <Row>
-                                    <Col className="p-0">
+                                <div>
+                                    <div className="p-0">
                                         <NavView user={user} />
-                                    </Col>
-                                </Row>
+                                    </div>
+                                </div>
                                 <ProfileView user={user} movies={movies} />
                             </Container>
                         )
@@ -184,18 +185,18 @@ class MainView extends React.Component{
                         if (movies.length === 0) return <div className="mainview" />;
                         return (
                             <Container>
-                                <Row>
-                                    <Col className="p-0">
+                                <div>
+                                    <div className="p-0">
                                         <NavView user={user} />
-                                    </Col>
-                                </Row>
-                                <Col md={8}>
+                                    </div>
+                                </div>
+                                <div md={8}>
                                     <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
-                                </Col>
+                                </div>
                             </Container>
                         )        
                     }} />
-                </Row>
+                </div>
                 </ModalSwitch>
             </Router>   
             );
