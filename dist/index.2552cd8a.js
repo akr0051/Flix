@@ -41655,146 +41655,180 @@ function RegistrationView() {
             console.log(data);
             window.open('/', '_self');
         }).catch((e1)=>{
-            alert('Error registering');
+            alert('Error registering.');
         });
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement("form", {
-        className: "reg-block",
+        className: "main-form",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
             lineNumber: 36
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        className: "title",
-        __source: {
-            fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 37
-        },
-        __self: this
-    }, "Great to meet you!"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        className: "subtitle",
+        className: "main-title",
+        id: "reg-title",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
             lineNumber: 38
         },
         __self: this
-    }, "Create an account"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        controlId: "formUsername",
+    }, "Great to meet you!"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "main-subtitle",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
             lineNumber: 39
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, "Create an account"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "input-label",
+        id: "reg-form-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 40
+            lineNumber: 41
         },
         __self: this
-    }, "Username"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
+            lineNumber: 42
+        },
+        __self: this
+    }, "Username")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "input-control-box",
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
+            lineNumber: 45
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("input", {
+        className: "input-control",
         placeholder: "me@google.com",
         type: "text",
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 41
+            lineNumber: 46
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_bs.BsPerson, {
         color: "white",
-        class: "d-inline-block btn float-right",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 41
+            lineNumber: 47
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        controlId: "formEmail",
+        className: "input-label",
+        id: "reg-form-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 43
+            lineNumber: 50
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 44
+            lineNumber: 51
         },
         __self: this
-    }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, "Email")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "input-control-box",
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
+            lineNumber: 54
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("input", {
+        className: "input-control",
         placeholder: "me@google.com",
         type: "text",
         onChange: (e)=>setEmail(e.target.value)
         ,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 45
+            lineNumber: 55
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_hi.HiOutlineMail, {
         color: "white",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 45
+            lineNumber: 56
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        controlId: "formPassword",
+        className: "input-label",
+        id: "reg-form-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 47
+            lineNumber: 59
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 48
+            lineNumber: 60
         },
         __self: this
-    }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }, "Password")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "input-control-box",
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
+            lineNumber: 63
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("input", {
+        className: "input-control",
         placeholder: "Enter your password",
         type: "text",
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 49
+            lineNumber: 64
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_bi.BiLockAlt, {
         color: "white",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 49
+            lineNumber: 65
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        controlId: "formPassword",
+        className: "blank-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 51
+            lineNumber: 68
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+    }), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "input-control-box",
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
+            lineNumber: 70
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("input", {
+        className: "input-control",
         placeholder: "Enter your password again",
         type: "text",
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 52
+            lineNumber: 71
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("button", {
-        className: "register-btn",
-        variant: "primary",
+        className: "standard-btn",
         type: "submit",
         onClick: handleSubmit,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/registration-view/registration-view.jsx",
-            lineNumber: 58
+            lineNumber: 79
         },
         __self: this
     }, "Register")));
@@ -87033,44 +87067,45 @@ function LoginView(props) {
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("form", {
-        className: "login-form",
+        className: "main-form",
+        id: "login-form",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
             lineNumber: 30
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h1", {
-        className: "title",
-        __source: {
-            fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 31
-        },
-        __self: this
-    }, "Great to meet you!"), /*#__PURE__*/ _reactDefault.default.createElement("h1", {
-        className: "subtitle",
+        className: "main-title",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
             lineNumber: 32
+        },
+        __self: this
+    }, "Great to meet you!"), /*#__PURE__*/ _reactDefault.default.createElement("h1", {
+        className: "main-subtitle",
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
+            lineNumber: 34
         },
         __self: this
     }, "Log into your account"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "input-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 33
+            lineNumber: 36
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 34
+            lineNumber: 37
         },
         __self: this
     }, "Email")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "input-control-box",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 36
+            lineNumber: 40
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -87082,7 +87117,7 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 38
+            lineNumber: 41
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_hi.HiOutlineMail, {
@@ -87090,28 +87125,28 @@ function LoginView(props) {
         color: "white",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 40
+            lineNumber: 42
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "input-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 42
+            lineNumber: 45
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("label", {
         className: "password-label",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 43
+            lineNumber: 46
         },
         __self: this
     }, "Password")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "input-control-box",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 45
+            lineNumber: 49
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("input", {
@@ -87123,7 +87158,7 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 47
+            lineNumber: 50
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_bi.BiLockAlt, {
@@ -87131,14 +87166,14 @@ function LoginView(props) {
         color: "white",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 49
+            lineNumber: 51
         },
         __self: this
     })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
         className: "button-alignment",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 51
+            lineNumber: 54
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -87147,20 +87182,20 @@ function LoginView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 52
+            lineNumber: 55
         },
         __self: this
-    }, "Login"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+    }, "Login"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        __source: {
+            fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
+            lineNumber: 57
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
         to: `/register`,
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 54
-        },
-        __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
-        __source: {
-            fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 55
+            lineNumber: 58
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -87168,7 +87203,7 @@ function LoginView(props) {
         type: "button",
         __source: {
             fileName: "/Users/amandarivera/Flix/src/components/login-view/login-view.jsx",
-            lineNumber: 56
+            lineNumber: 59
         },
         __self: this
     }, "Register")))))));

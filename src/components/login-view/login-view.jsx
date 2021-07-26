@@ -27,36 +27,41 @@ export function LoginView(props) {
 
     return (
         <div >
-            <form className="login-form">
-                <h1 className="title">Great to meet you!</h1>
-                <h1 className="subtitle">Log into your account</h1>
+            <form className="main-form" id="login-form">
+                
+                <h1 className="main-title">Great to meet you!</h1>
+                
+                <h1 className="main-subtitle">Log into your account</h1>
+                
                 <div className="input-label">
                     <label>Email</label>
                 </div>
+
                 <div className="input-control-box">
-                    
-                        <input className="input-control" type="email" name="email" placeholder="me@google.com" onChange={e =>setUsername(e.target.value) } />
-                    
+                    <input className="input-control" type="email" name="email" placeholder="me@google.com" onChange={e =>setUsername(e.target.value) } />
                     <HiOutlineMail className="icon-padding" color="white"/>
                 </div>
+
                 <div className="input-label">
                     <label className="password-label">Password</label>
                 </div>
+
                 <div className="input-control-box">
-                    
-                        <input className="input-control" type="password" name="password" placeholder="Enter your password" onChange={e =>setPassword(e.target.value)} />
-                
+                    <input className="input-control" type="password" name="password" placeholder="Enter your password" onChange={e =>setPassword(e.target.value)} />
                     <BiLockAlt className="icon-padding" color="white"/>
                 </div>
-                <div className="button-alignment">
-                <button className="standard-btn" type="submit" onClick={handleSubmit}>Login</button>
                 
-            <Link to={`/register`}>
+                <div className="button-alignment">
+                    <button className="standard-btn" type="submit" onClick={handleSubmit}>Login</button>
+
                 <div>
-                    <button className="register-btn" type="button" >Register</button>
+                    <Link to={`/register`}>
+                        <button className="register-btn" type="button" >Register</button>
+                    </Link>    
                 </div>
-            </Link>
-            </div>
+                </div>
+            
+            
             </form>
         </div>    
     );

@@ -1,4 +1,4 @@
-.title {
+.main-title {
     font-family: Archivo;
     font-size: 38px;
     color: #FFFFFF;
@@ -6,7 +6,7 @@
     height: 50px;
 }
 
-.subtitle {
+.main-subtitle {
     font-family: Archivo;
     font-size: 15px;
     color: #828D99;
@@ -18,16 +18,19 @@
     padding-top: 8px;
 }
 
-.login-form {
+.main-form {
     background-color: #1E2127;
     width: 430px;
     height: 501px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     border-radius: 2px;
     margin: auto;
+}
+
+#login-form {
+    justify-content: center;
 }
 
 .standard-btn {

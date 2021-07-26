@@ -27,37 +27,59 @@ export function RegistrationView() {
         window.open('/', '_self');
     })
     .catch(e => {
-        alert('Error registering')
+        alert('Error registering.')
     });
 
     }
 
     return (
-        <form className="reg-block">
-            <div className="title">Great to meet you!</div>
-            <div className="subtitle">Create an account</div>
-            <div controlId="formUsername">
-                <div>Username</div>
-                <div placeholder="me@google.com" type="text" onChange={e =>setUsername(e.target.value)} /><BsPerson color="white" class="d-inline-block btn float-right"/>
+        <form className="main-form">
+
+            <div className="main-title" id="reg-title">Great to meet you!</div>
+            <div className="main-subtitle">Create an account</div>
+
+            <div className="input-label" id="reg-form-label">
+                <label>Username</label>
             </div>
-            <div controlId="formEmail">
-                <div>Email</div>
-                <div placeholder="me@google.com" type="text" onChange={e =>setEmail(e.target.value)} /><HiOutlineMail color="white"/>
+
+            <div className="input-control-box">
+                <input className="input-control" placeholder="me@google.com" type="text" onChange={e =>setUsername(e.target.value)} />
+                <BsPerson color="white"/>
             </div>
-            <div controlId="formPassword">
-                <div>Password</div>
-                <div placeholder="Enter your password" type="text" onChange={e =>setPassword(e.target.value)} /><BiLockAlt color="white"/>
+
+            <div className="input-label" id="reg-form-label">
+                <label>Email</label>
             </div>
-            <div controlId="formPassword">
-                <div placeholder="Enter your password again" type="text" onChange={e =>setPassword(e.target.value)} />
+
+            <div className="input-control-box">
+                <input className="input-control"placeholder="me@google.com" type="text" onChange={e =>setEmail(e.target.value)} />
+                <HiOutlineMail color="white"/>
             </div>
+
+            <div className="input-label" id="reg-form-label">
+                <label>Password</label>
+            </div>
+
+            <div className="input-control-box">    
+                <input className="input-control" placeholder="Enter your password" type="text" onChange={e =>setPassword(e.target.value)} />
+                <BiLockAlt color="white"/>
+            </div>
+
+            <div className="blank-label"></div>
+            
+            <div className="input-control-box">
+                <input className="input-control" placeholder="Enter your password again" type="text" onChange={e =>setPassword(e.target.value)} />
+            </div>
+
             {/* <div controlId="formBirthday">
                 <div>Birthday</div>
                 <div placeholder="Enter your birthday" type="text" onChange={e =>setBirthday(e.target.value)} />
             </div> */}
-            <button className="register-btn" variant="primary" type="submit" onClick={handleSubmit} >
+
+            <button className="standard-btn" type="submit" onClick={handleSubmit} >
                 Register
             </button>
+
         </form>
     )
     
