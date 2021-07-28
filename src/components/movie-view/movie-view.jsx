@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import './movie-view.scss'
+import { FaRegHeart } from 'react-icons/fa';
+import './movie-view.scss';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setProfile } from '../../actions/actions';
@@ -27,28 +28,48 @@ export class MovieView extends React.Component{
     
     
     render() {
-        const { movie } = this.props;
+        const { movie, onBackClick } = this.props;
 
         return (
-        
-            <div class="card">
-                <div variant="top" src={movie.ImagePath} />
-                
-                    <div>{movie.Title}</div>
-                    <div>{movie.Description}</div>
+           
+            <div className="card">
+
+                <img className="movie-img" src={movie.ImagePath} />
+
+                <div className="genre-title">{movie.Genre.Name}</div>
+
+                <div className="fav">
+                    <div className="card-title" id="movie-title">{movie.Title}</div>
+                    <div className="fav-icon" onClick={() => this.addFavorite(movie)} ><FaRegHeart color="white"/></div>
+                </div>
+
+                <div className="card-label">DESCRIPTION</div>
+
+                <div className="card-desc">{movie.Description}</div>
+
+                <div className="line"></div>
+
+                <div className="info-label">
+                    <div className="info-dir">DIRECTOR</div>
+                    <div className="info-gen">GENRE</div>
+                </div>
+
+                <div className="info-links">
                     <Link to={`/genres/${movie.Genre.Name}`}>
-                        <button variant="link">Genre</button>
-                    </Link>
-                    <Link to={`/directors/${movie.Director.Name}`}>
-                        <button variant="link">Director</button>
-                    </Link>
-                    <button variant="link" onClick={() => this.addFavorite(movie)} >Add to Favorites</button>
-                    <Link to={'/'}>
-                        <button variant="link">Back</button>
+                        <div className="info-link">{movie.Genre.Name}</div>
                     </Link>
                     
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                        <div className="info-link">{movie.Director.Name}</div>
+                    </Link>
                 </div>
-            
+
+                <div className="line"></div>
+                    
+                <button className="close-btn" type="submit" onClick={()=>onBackClick()} >X</button>
+                    
+            </div>
+
         )
        
     }

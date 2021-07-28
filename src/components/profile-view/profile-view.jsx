@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import { Card, Container, Form } from 'react-bootstrap';
+import Container from '@material-ui/core/Container';
+import { FiTrash } from 'react-icons/fi'
 import './profile-view.scss';
 import { connect } from 'react-redux';
 import { setProfile } from '../../actions/actions';
@@ -97,57 +97,85 @@ export class ProfileView extends React.Component{
         });
 
         return (
-            <Container>
-                <Card.Title>My Favorite Movies</Card.Title>
-                    {favoriteMoviesList.map((movie) => {
-                        return(
-                            <Card>
-                                <Card.Img variant="top" src={movie.ImagePath} />
-                                <Card.Body>
-                                    <Card.Title>{movie.Title}</Card.Title>
-                                    <Link to={`/movies/${movie._id}`}>
-                                        <Button variant="link">Open</Button>
-                                    </Link>    
-                                </Card.Body>
-                                <Button variant="link" onClick={() => this.removeFavorite(movie)} >Remove From Favorites</Button>
-                            </Card>
+            <div className="profile-bg">
+
+                <div className="profile-title">Personal Info</div>      
+
+                <Container>
+
+                    <div className="fav-box">
+
+                        <div className="fav-title">My Favorite Movies</div>
+
+                            {favoriteMoviesList.map((movie) => {
+                                return(
+                                    <div className="movie-fav-box">
+
+                                        <Link to={`/movies/${movie._id}`}>
+                                            <div className="movie-title-link">{movie.Title}</div>
+                                        </Link>
+
+                                        <div className="movie-desc">{movie.Description}</div>   
+                                        
+                                        <div className="fav-icon" onClick={() => this.removeFavorite(movie)} ><FiTrash color="white"/></div>
+
+                                    </div>
+                            )})}
+                    </div>
+
+                </Container>
+
+                <Container>
+
+                        <div onSubmit={e => this.handleUpdate(e)}>
+                            <div className="profile-box">
+
+                                <div className="profile-label">Username</div>
+                                <div className="profile-control-box">
+                                    <input className="profile-input" type="text" placeholder="John" ></input>
+                                </div>
+
+                                <div className="profile-label">Email</div>
+                                <div className="profile-control-box">
+                                    <input className="profile-input" type="email" placeholder="John@google.com"></input>
+                                </div>
+
+                                <div className="password-title">Password</div>
+
+                                <div className="profile-label">Old Password</div>
+                                <div className="password-control-box">
+                                    <input className="password-input" type="password" placeholder="********"></input>
+                                </div>
+
+                                <div className="profile-label">New Password</div>
+                                <div className="password-control-box">
+                                    <input className="password-input" type="password" placeholder="********"></input>
+                                </div>
+
+                                <div className="profile-label">Repeat Password</div>
+                                <div className="password-control-box">
+                                    <input className="password-input" type="password" placeholder="********"></input>
+                                </div>
                             
-                        )})}
-                          
-            <Container>
-                <Card>
-                    <Card.Title>User</Card.Title>
-                    <Card.Body>
-                        <Card.Text>Username: {user.Username} </Card.Text>
-                        <Card.Text>Email: {user.Email} </Card.Text>
-                        <Card.Text>Birthday: {user.Birthday} </Card.Text>
-                    </Card.Body>
-                        <Form onSubmit={e => this.handleUpdate(e)}>
-                            <Form.Group>
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" placeholder="New Username" ></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="text" placeholder="New Password"></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="text" placeholder="New Email"></Form.Control>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Birthday</Form.Label>
-                                <Form.Control type="text" placeholder="New Birthday"></Form.Control>
-                            </Form.Group>
-                            <Button className="profile-button" type="submit">Update Profile</Button>
-                            <Button onClick={(e) => this.deregister(e)} variant="submit" className='delete-button'>Delete Account</Button>
-                        </Form>    
+                                {/* <div className="profile-label">Birthday</div>
+                                <input className="profile-input" type="text" placeholder="New Birthday"></input> */}
+                           
+                           <div><button className="profile-btn" type="submit">Save Settings</button></div>
+
+                        </div>
+
+                        <div><button onClick={(e) => this.deregister(e)} variant="submit" className='delete-btn'><FiTrash color="white"/>Delete Account</button></div>
+
+                    </div>
                     
-                </Card>
-            </Container>
-            </Container>
+
+                </Container>
+            </div>
+
         )
+            
     }
+    
 }
 
 ProfileView.propTypes = {

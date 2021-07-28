@@ -1,0 +1,168 @@
+.profile-bg {
+    width: 1128px;
+    height: 789px;
+    margin: 100px 156px 53px;
+    background-color: #1E2127;
+    padding: 48px 82px;
+    position: relative;
+}
+
+.fav-box {
+    width: 376px;
+    height: 253px;
+    float: right;
+    margin-left: 48px;
+    background-color: #1B1D24;
+    border-radius: 4px;
+}
+
+.fav-title {
+    width: 178px;
+    font-size: 20px;
+    color: #FFFFFF;
+    height: 30px;
+    margin-bottom: 34px;
+}
+
+.movie-title-link {
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 192px;
+    height: 24px;
+}
+
+.movie-desc {
+    color: #828D99;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 13px;
+    width: 218px;
+    height: 19px;
+    margin-left: 0;
+}
+
+.movie-fav-box {
+    display: inline-block;
+    align-items: center;
+    height: 43px;
+    width: 324px;
+}
+
+.movie-icon {
+    float: right
+}
+
+.profile-title {
+    font-size: 32px;
+    color: #FFFFFF;
+    width: 964px;
+    height: 44px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.profile-box {
+    height: 520px;
+    width: 540px;
+    position: absolute;
+    left: 82px;
+}
+
+.profile-label {
+    font-size: 15px;
+    color: #BEC2CC;
+    width: 207px;
+    height: 24px;
+}
+
+.profile-control-box {
+    width: 540px;
+    height: 36px;
+    background-color: #30333A !important;
+    border-radius: 4px;
+    border: 1px solid grey;
+    outline: none;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    margin-bottom: 24px;
+}
+
+.profile-input {
+    font-size: 15px;
+    background-color: #30333A;
+    margin-left: 0 !important;
+    height: 24px;
+    width: 516px;
+    color: #BEC2CC;
+}
+
+.password-control-box {
+    width: 264px;
+    height: 36px;
+    background-color: #30333A !important;
+    border-radius: 4px;
+    border: 1px solid grey;
+    outline: none;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    margin-bottom: 24px;
+}
+
+.password-input {
+    font-size: 15px;
+    background-color: #30333A;
+    margin-left: 0 !important;
+    height: 24px;
+    width: 240px;
+    color: #BEC2CC;
+}
+
+.password-title {
+    width: 540px;
+    height: 29px;
+    font-size: 18px;
+    color: #FFFFFF;
+    font-weight: 600;
+    margin-top: 80px;
+    margin-bottom: 24px;
+}
+
+.profile-btn {
+    width: 148px;
+    height: 48px;
+    background-color: #0093FF;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+.delete-btn {
+    position: absolute;
+    margin-bottom: 50px;
+    margin-right: 82px;
+    bottom: 0;
+    right: 0;
+    background-color: #1E2127;
+    color: #828D99;
+    font-size: 12px;
+    border: 0;
+    -webkit-appearance: none;
+    align-items: center;
+    display: inline-block;
+    justify-items: center;
+    width: 116px;
+    height: 20px;
+}

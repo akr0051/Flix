@@ -61,8 +61,7 @@ class MainView extends React.Component{
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         this.props.setProfile(null);
-        window.open('/', '_self');
-        
+        window.open('/', '_self');    
     }
 
     getMovies(token) {
@@ -84,7 +83,7 @@ class MainView extends React.Component{
         return (
             
             <Router>
-                <ModalSwitch
+                {/* <ModalSwitch
                 
   renderModal={({ open, redirectToBack }) => (
     <Modal open={open} scroll="body" onExited={redirectToBack}>
@@ -103,18 +102,20 @@ class MainView extends React.Component{
         path="/genres/:name"
         component={GenreView}
       />
-    </Modal>
-  )}
->
+    </Modal> */}
+  {/* )} */}
+{/* > */}
                 <div className="main-view">
-                    
+                
+                        
+                <button className="logout-btn" onClick={() => { this.onLoggedOut() }}>LOGOUT</button>
                     <Route exact path="/" render={() => {
                         console.log("login", user, !user)
                         if (!user) return (
                         <Container>
                             <div>
                                 <div className="p-0">
-                                    <NavView user={user} />
+                                    {/* <NavView user={user} /> */}
                                 </div>
                             </div>
                         <div>
@@ -122,6 +123,7 @@ class MainView extends React.Component{
                         </div>
                         </Container>)
                         return <MoviesList movies={movies}/>
+                        
                     }} />
 
                     <Route path="/register" render={() => {
@@ -137,11 +139,11 @@ class MainView extends React.Component{
                         <Container>
                             <div>
                                 <div className="p-0">
-                                    <NavView user={user} />
+                                    {/* <NavView user={user} /> */}
                                 </div>
                             </div>
                             
-                            <div md={8}>
+                            <div>
                                 {<MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />}
                             </div> 
                       </Container>
@@ -151,15 +153,10 @@ class MainView extends React.Component{
                     <Route path="/directors/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return (
+                           
+                       
                         <Container>
-                            <div>
-                                <div className="p-0">
-                                    <NavView user={user} />
-                                </div>
-                                
-
                             
-                            </div>
                             <div md={8}>
                                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
                             </div>
@@ -173,7 +170,7 @@ class MainView extends React.Component{
                             <Container>
                                 <div>
                                     <div className="p-0">
-                                        <NavView user={user} />
+                                        {/* <NavView user={user} /> */}
                                     </div>
                                 </div>
                                 <ProfileView user={user} movies={movies} />
@@ -187,17 +184,17 @@ class MainView extends React.Component{
                             <Container>
                                 <div>
                                     <div className="p-0">
-                                        <NavView user={user} />
+                                        {/* <NavView user={user} /> */}
                                     </div>
                                 </div>
-                                <div md={8}>
+                                <div>
                                     <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
                                 </div>
                             </Container>
                         )        
                     }} />
                 </div>
-                </ModalSwitch>
+                {/* </ModalSwitch> */}
             </Router>   
             );
     }

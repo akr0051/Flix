@@ -26,7 +26,9 @@ export function LoginView(props) {
     };
 
     return (
-        <div >
+        
+        <div className="background-view">
+            <div className="header">Flix</div>
             <form className="main-form" id="login-form">
                 
                 <h1 className="main-title">Great to meet you!</h1>
@@ -38,7 +40,7 @@ export function LoginView(props) {
                 </div>
 
                 <div className="input-control-box">
-                    <input className="input-control" type="email" name="email" placeholder="me@google.com" onChange={e =>setUsername(e.target.value) } />
+                    <input className="input-control" type="email" name="email" placeholder="me" onChange={e =>setUsername(e.target.value) } />
                     <HiOutlineMail className="icon-padding" color="white"/>
                 </div>
 

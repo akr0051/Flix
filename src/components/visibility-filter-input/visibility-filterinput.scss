@@ -1,8 +1,23 @@
-// .bootstrap-iso .searchbar {
-//     font-family: Archivo;
-//     font-size: 15px;
-//     color: #828D99;
-//     height: 24px;
-//     width: 1,008.39px;
-//     color: #30333A;
-// }
+.search-bar-box {
+    justify-content: center;
+    position: absolute;
+    display: inline-flex;
+    width: 1070px;
+    height: 42px;
+    text-align: center;
+    border-radius: 4px;
+    border: 1px solid grey;
+    background-color: #30333A;
+    align-items: center;
+    padding-left: 10px;
+}    
+
+.searchbar {
+    font-size: 15px;
+    color: #828D99;
+    border: none;
+    background-color: #30333A;
+    height: 24px;
+    width: 100%;
+    outline: 0;
+}

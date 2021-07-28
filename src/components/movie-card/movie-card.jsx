@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 import { Modal } from '../modal/modal';
 import { ModalLink } from 'react-router-modal-gallery';
 import './movie-card.scss'
@@ -15,18 +16,31 @@ export class MovieCard extends React.Component {
        
         return (
             
-        <div class="card">
-            
-            
-                <div>{movie.Title}</div>
-                <img variant="top" src={movie.ImagePath} />
-                <div>{movie.Descriptiopn}</div>
-                <Link to={`/movies/${movie._id}`}>
-                    <button variant="link">Read More</button>
-                </Link>
-                <ModalLink to= {`/movies/${movie._id}`}>{movie.Title}</ModalLink>
-            
-        </div>
+            <div className="movie-card">
+                
+                    <div className="movie-title">{movie.Title}</div>
+
+                    <img className="movie-card-img" variant="top" src={movie.ImagePath} />
+
+                    <div className="movie-description">{movie.Description}</div>
+
+                    <div className="line-main"></div> 
+
+                    <Link to={`/movies/${movie._id}`}>
+                        <div className="link-box">
+                            
+                            <FaLongArrowAltRight color="white"/>  
+                            
+                            <div className="link">
+                                Read More
+                            
+                            </div> 
+                        
+                        </div>
+                    </Link>
+                    {/* <ModalLink to= {`/movies/${movie._id}`}>{movie.Title}</ModalLink> */}
+                
+            </div>
         )
      
     }   

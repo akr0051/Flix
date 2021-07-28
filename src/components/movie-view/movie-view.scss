@@ -1,0 +1,63 @@
+.genre-title {
+    color: #FFFFFF;
+    font-size: 11px;
+    margin-top: 50px;
+    margin-left: 82px;
+}
+
+#movie-title {
+    margin-top: 10px !important;
+}
+
+.info-label {
+    display:inline-flex;
+    margin-top: 12px;
+    margin-left: 82px;
+}
+
+.info-dir {
+    color:#828D99;
+    font-size: 11px;
+    width: 169px;
+    font-weight: 600;
+}
+
+.info-gen {
+    color:#828D99;
+    font-size: 11px;
+    width: 169px;
+    font-weight: 600;
+}
+
+.info-links {
+    margin-left: 82px;
+    margin-bottom: 39px;
+    margin-top: 24px;
+}
+
+.info-link {
+    display: inline-flex;
+    margin-top: 17px;
+    color: #117DCE;
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 15px;
+    width: 169px;
+    height: 24px;
+}
+
+.fav {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.fav-icon {
+    margin-left: 300px;
+}    
+
+.movie-img {
+    width: 100%;
+    height: 200px;
+}
+

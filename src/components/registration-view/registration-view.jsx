@@ -33,6 +33,10 @@ export function RegistrationView() {
     }
 
     return (
+        <div className="background-view">
+
+        <div className="header">Flix</div>
+        
         <form className="main-form">
 
             <div className="main-title" id="reg-title">Great to meet you!</div>
@@ -43,7 +47,7 @@ export function RegistrationView() {
             </div>
 
             <div className="input-control-box">
-                <input className="input-control" placeholder="me@google.com" type="text" onChange={e =>setUsername(e.target.value)} />
+                <input className="input-control" placeholder="me" type="text" onChange={e =>setUsername(e.target.value)} />
                 <BsPerson color="white"/>
             </div>
 
@@ -81,6 +85,7 @@ export function RegistrationView() {
             </button>
 
         </form>
+        </div>
     )
     
 }

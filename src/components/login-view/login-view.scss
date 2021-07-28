@@ -1,3 +1,14 @@
+.background-view {
+    background-color: #0376E3 !important;
+    width: 100%;
+    height: 100%;
+    padding:0;
+    margin:0;
+    top:0;
+    left:0;
+    position: fixed;
+}
+
 .main-title {
     font-family: Archivo;
     font-size: 38px;
@@ -26,7 +37,11 @@
     display: flex;
     flex-direction: column;
     border-radius: 2px;
-    margin: auto;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #login-form {
@@ -41,6 +56,8 @@
     border-radius: 4px;
     margin-bottom: 66px;
     margin-top: 36px;
+    border: 0;
+    -webkit-appearance: none;
 }
 
 .register-btn {
@@ -51,6 +68,8 @@
     border-radius: 4px;
     margin: 0 auto;
     display: block;
+    border: 0;
+    -webkit-appearance: none;
 }
 
 .input-control {
@@ -93,7 +112,23 @@
     align-items: flex-end;
 }
 
+input, select, textarea{
+    color: #BEC2CC;
+}
 
+textarea:focus, input:focus {
+    color: #BEC2CC;
+}
+
+.header {
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    width: 178px;
+    height: 30px;
+    margin-left: 31px;
+    margin-top: 13px;
+}
 
 
 

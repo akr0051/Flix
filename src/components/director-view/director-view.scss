@@ -1,0 +1,109 @@
+.line {
+    width: 698px;
+    height: 20px;
+    border-bottom: 1px solid #30333A;
+    outline: none;
+    background: transparent;
+    
+ }
+
+.card {
+    width: 698px;
+    background-color: #1E2127 !important;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 100px;
+    height: 100%;
+    position: absolute !important;
+}
+
+.card-title {
+    font-size: 32px;
+    color: #FFFFFF;
+    height: 44px;
+    margin-top: 100px;
+    margin-left: 82px;
+
+}
+
+.card-label {
+    color: #828D99;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 18px;
+    margin-left: 82px;
+}
+
+.card-desc {
+    color: #BEC2CC;
+    font-size: 15px;
+    margin-top: 14px;
+    margin-bottom: 83px;
+    width: 554px;
+    margin-left: 82px;
+}
+
+.stats-label {
+    display:inline-flex;
+    margin-top: 12px;
+    margin-left: 82px;
+}
+
+.stats-info {
+    display: inline-flex;
+    margin-top: 17px;
+    margin-left: 82px;
+    margin-bottom: 39px;
+}
+
+.born-label {
+    color:#828D99;
+    font-size: 11px;
+    width: 169px;
+    font-weight: 600;
+    margin-left: 82px;
+    
+}
+
+.died-label {
+    color:#828D99;
+    font-size: 11px;
+    width: 169px;
+    font-weight: 600;
+    margin-left: 82px;
+}
+
+.born {
+    color: #BEC2CC;
+    font-size: 15px;
+    width: 169px;
+    margin-left: 82px;
+}
+
+.died {
+    color: #BEC2CC;
+    font-size: 15px;
+    width: 169px;
+    margin-left: 82px;
+}
+
+.other-movies-label {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 46px;
+    margin-bottom: 38px;
+    margin-left: 82px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 24px;
+    margin-right: 36px;
+    color: #F5F5F5;
+    background-color: #1B1D24;
+    border: 0;
+    -webkit-appearance: none;
+    border-radius: 200px;
+}
