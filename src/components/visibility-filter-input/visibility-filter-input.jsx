@@ -6,16 +6,19 @@ import './visibility-filterinput.scss';
 
 function VisibilityFilterInput(props) {
   return (
+    
     <div className="search-bar-box">
+
       <div className="search-icon">
         <FaSearch className="search-icon" color="white"/>
       </div>
-    
+                      
       <input className="searchbar" type="search"
         onChange={e => props.setFilter(e.target.value)}
         value={props.visibilityFilter}
         placeholder="Search..."
-      />
+        />
+
     </div>
   
   )

@@ -2,18 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import { ModalSwitch, ModalRoute, ModalLink } from 'react-router-modal-gallery';
 import { setMovies, setProfile } from '../../actions/actions';
-import Container from '@material-ui/core/Container';
 import MoviesList from '../movies-list/movies-list.jsx';
-import { NavView } from '../nav/nav';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import ProfileView from '../profile-view/profile-view';
-import { Modal } from '../modal/modal'; 
+import { Link } from 'react-router-dom';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import './main-view.scss';
 
 class MainView extends React.Component{
@@ -83,47 +81,46 @@ class MainView extends React.Component{
         return (
             
             <Router>
-                {/* <ModalSwitch
-                
-  renderModal={({ open, redirectToBack }) => (
-    <Modal open={open} scroll="body" onExited={redirectToBack}>
-      <ModalRoute
-        defaultParentPath="/movies"
-        path="/movies/movieId"
-        component={MovieView}
-      />
-      <ModalRoute
-        defaultParentPath="/directors"
-        path="/directors/:name"
-        component={DirectorView}
-      />
-      <ModalRoute
-        defaultParentPath="/genres"
-        path="/genres/:name"
-        component={GenreView}
-      />
-    </Modal> */}
-  {/* )} */}
-{/* > */}
+               
                 <div className="main-view">
+
+                <header className="index-header">
+
+                    <h1>Flix</h1>
+
+                    {/* <div className="search-bar-box">
+
+                        <div className="search-icon">
+                          <FaSearch className="search-icon" color="white"/>
+                        </div>
+                      
+                        <input className="searchbar" type="search"
+                          onChange={e => props.setFilter(e.target.value)}
+                          value={props.visibilityFilter}
+                          placeholder="Search..."
+                        />
+
+                    </div> */}
+
+                    <button className="logout-btn" onClick={() => { this.onLoggedOut() }}>LOGOUT</button>
+
+                </header>
+
+                <div className="navbar">
+                    <Link to={`/users`} className="nav-account">ACCOUNT</Link>
+                    <Link to={`/`} className="nav-movies">MOVIES</Link>
+                </div>
                 
-                        
-                <button className="logout-btn" onClick={() => { this.onLoggedOut() }}>LOGOUT</button>
                     <Route exact path="/" render={() => {
                         console.log("login", user, !user)
                         if (!user) return (
-                        <Container>
-                            <div>
-                                <div className="p-0">
-                                    {/* <NavView user={user} /> */}
-                                </div>
-                            </div>
-                        <div>
-                        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-                        </div>
-                        </Container>)
-                        return <MoviesList movies={movies}/>
                         
+                        <div>
+                            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                        </div>
+                        )
+                        return <MoviesList movies={movies}/>
+
                     }} />
 
                     <Route path="/register" render={() => {
@@ -136,65 +133,45 @@ class MainView extends React.Component{
                     <Route path="/movies/:movieId" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return (
-                        <Container>
-                            <div>
-                                <div className="p-0">
-                                    {/* <NavView user={user} /> */}
-                                </div>
-                            </div>
-                            
+                        
                             <div>
                                 {<MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />}
                             </div> 
-                      </Container>
+                      
                       );
                     }} />
 
                     <Route path="/directors/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return (
-                           
-                       
-                        <Container>
-                            
+                    
                             <div md={8}>
                                 <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
                             </div>
-                        </Container>
+                        
                         )
                     }} />
 
                     <Route path ="/users" render={({ match, history }) => {
                         if (!user) return <div className="main-view"/>
                         return (
-                            <Container>
-                                <div>
-                                    <div className="p-0">
-                                        {/* <NavView user={user} /> */}
-                                    </div>
-                                </div>
+                            <div>
+                            
                                 <ProfileView user={user} movies={movies} />
-                            </Container>
+
+                            </div>
                         )
                     }} />
 
                     <Route path="/genres/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="mainview" />;
                         return (
-                            <Container>
-                                <div>
-                                    <div className="p-0">
-                                        {/* <NavView user={user} /> */}
-                                    </div>
-                                </div>
-                                <div>
-                                    <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
-                                </div>
-                            </Container>
+                            
+                            <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
+                            
                         )        
                     }} />
                 </div>
-                {/* </ModalSwitch> */}
             </Router>   
             );
     }

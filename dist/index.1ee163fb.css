@@ -1,8 +1,6 @@
 .search-bar-box {
   justify-content: center;
-  position: absolute;
   display: inline-flex;
-  width: 1070px;
   height: 42px;
   text-align: center;
   border-radius: 4px;
@@ -10,6 +8,7 @@
   background-color: #30333A;
   align-items: center;
   padding-left: 10px;
+  flex-grow: 1;
 }
 
 .searchbar {
@@ -22,21 +21,19 @@
   outline: 0;
 }
 .movie-card {
-  height: 718px;
-  width: 400px;
   background-color: #1E2127;
-  display: flex;
   flex-direction: column;
-  margin-bottom: 38px;
-  margin-top: 38px;
+  display: flex;
+  padding: 36px;
+  box-sizing: border-box;
+  max-width: 400px;
+  border-radius: 5px;
 }
 
 .movie-title {
   color: #FFFFFF;
   font-size: 20px;
-  margin-top: 36px;
   margin-bottom: 16px;
-  width: 498px;
 }
 
 .movie-card-img {
@@ -71,7 +68,6 @@
 }
 
 .line-main {
-  width: 328px;
   height: 1px;
   background: #30333A;
   border: 0;
@@ -228,32 +224,21 @@ textarea:focus, input:focus {
 .genre-title {
   color: #FFFFFF;
   font-size: 11px;
-  margin-top: 50px;
+  margin: 50px;
   margin-left: 82px;
 }
 
 #movie-title {
-  margin-top: 10px !important;
+  width: 80%;
+  margin-top: 0 !important;
 }
 
-.info-label {
-  display: inline-flex;
-  margin-top: 12px;
-  margin-left: 82px;
-}
-
-.info-dir {
+.info-mv {
   color: #828D99;
   font-size: 11px;
   width: 169px;
   font-weight: 600;
-}
-
-.info-gen {
-  color: #828D99;
-  font-size: 11px;
-  width: 169px;
-  font-weight: 600;
+  margin-bottom: 24px;
 }
 
 .info-links {
@@ -262,30 +247,32 @@ textarea:focus, input:focus {
   margin-top: 24px;
 }
 
-.info-link {
-  display: inline-flex;
-  margin-top: 17px;
-  color: #117DCE;
-  border: 0;
-  -webkit-appearance: none;
-  font-size: 15px;
-  width: 169px;
-  height: 24px;
-}
-
 .fav {
   display: inline-flex;
   align-items: center;
-  margin-top: 20px;
+  margin-right: 82px;
 }
 
 .fav-icon {
-  margin-left: 300px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .movie-img {
   width: 100%;
   height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.dir-line {
+  margin: 24px 82px;
+  padding: 24px 0;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  display: flex;
 }
 .line {
   width: 698px;
@@ -397,10 +384,9 @@ textarea:focus, input:focus {
 .profile-bg {
   width: 1128px;
   height: 789px;
-  margin: 100px 156px 53px;
   background-color: #1E2127;
   padding: 48px 82px;
-  position: relative;
+  margin: 100px 156px 53px;
 }
 
 .fav-box {
@@ -429,6 +415,7 @@ textarea:focus, input:focus {
   white-space: nowrap;
   width: 192px;
   height: 24px;
+  margin-bottom: 5px;
 }
 
 .movie-desc {
@@ -444,14 +431,15 @@ textarea:focus, input:focus {
 }
 
 .movie-fav-box {
-  display: inline-block;
+  display: flex;
   align-items: center;
-  height: 43px;
-  width: 324px;
+  margin-bottom: 20px;
 }
 
-.movie-icon {
-  float: right;
+.delete-icon {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .profile-title {
@@ -466,14 +454,12 @@ textarea:focus, input:focus {
 .profile-box {
   height: 520px;
   width: 540px;
-  position: absolute;
   left: 82px;
 }
 
 .profile-label {
   font-size: 15px;
   color: #BEC2CC;
-  width: 207px;
   height: 24px;
 }
 
@@ -512,6 +498,7 @@ textarea:focus, input:focus {
   justify-content: center;
   display: inline-flex;
   margin-bottom: 24px;
+  margin-right: 12px;
 }
 
 .password-input {
@@ -546,21 +533,19 @@ textarea:focus, input:focus {
 }
 
 .delete-btn {
-  position: absolute;
-  margin-bottom: 50px;
-  margin-right: 82px;
-  bottom: 0;
-  right: 0;
   background-color: #1E2127;
   color: #828D99;
   font-size: 12px;
   border: 0;
   -webkit-appearance: none;
   align-items: center;
-  display: inline-block;
   justify-items: center;
-  width: 116px;
-  height: 20px;
+  float: right;
+  margin-top: 96px;
+}
+
+.passwords {
+  display: flex;
 }
 .main-view {
   display: grid;
@@ -573,7 +558,30 @@ textarea:focus, input:focus {
   margin: 0;
   top: 0;
   left: 0;
-  position: relative;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 24px;
+  margin: 42px auto;
+  place-items: center;
+}
+
+#index-title > h1 {
+  margin-bottom: 0;
+  margin-right: 42px;
+}
+
+.index-header {
+  height: 100px;
+  font-size: 20px;
+  font-family: "Archivo", sans-serif;
+  color: #0376E3;
+  padding: 13px 31px;
+  display: flex;
+  align-items: center;
+  background-color: red;
 }
 
 .logout-btn {
@@ -584,24 +592,38 @@ textarea:focus, input:focus {
   outline: none;
   color: #FFFFFF;
   font-size: 11px;
-  position: absolute;
-  top: 0;
-  right: 0;
   margin: 22px 31px;
-}
-#index-title {
-  font-size: 20px;
-  font-family: Archivo;
-  color: #FFFFFF;
-  height: 30px;
-  width: 178px;
-  padding-left: 31px;
-  padding-top: 13px;
-  position: absolute;
+  float: right;
 }
 
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: sticky;
+  display: inline;
+}
+
+.nav-movies {
+  font-size: 11px;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+  float: left;
+  padding: 30px;
+  border-bottom: 2px solid #0093FF;
+}
+
+.nav-account {
+  font-size: 11px;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+  float: left;
+  padding: 30px;
+}
 html, body {
   background-color: #1B1D24;
-  font-family: Archivo;
+  font-family: "Archivo", sans-serif;
 }
 /*# sourceMappingURL=index.1ee163fb.css.map */

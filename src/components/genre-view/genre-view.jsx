@@ -20,7 +20,18 @@ export class GenreView extends React.Component {
 
                     <div className="line"></div>
 
-                    {/* <div className="other-movies-label">Other {director.Name} movies</div> */}
+                    <div className="other-movies-label">Other {genre.Name} movies</div>
+
+                    {/* <div>{movie.map((m) => {
+                        if (m.Genre.Name === genre.Name) {
+                            return (
+                            <div>
+                                <MovieCard movie={m} />
+                            </div>
+                            )
+                        }
+                    })}      
+                    </div> */}
 
                     <button className="close-btn" onClick={()=>onBackClick()} type="submit">X</button>
 

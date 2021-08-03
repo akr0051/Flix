@@ -1,10 +1,9 @@
 .profile-bg {
     width: 1128px;
     height: 789px;
-    margin: 100px 156px 53px;
     background-color: #1E2127;
     padding: 48px 82px;
-    position: relative;
+    margin: 100px 156px 53px;
 }
 
 .fav-box {
@@ -33,6 +32,7 @@
     white-space: nowrap;
     width: 192px;
     height: 24px;
+    margin-bottom: 5px;
 }
 
 .movie-desc {
@@ -48,14 +48,15 @@
 }
 
 .movie-fav-box {
-    display: inline-block;
+    display: flex;
     align-items: center;
-    height: 43px;
-    width: 324px;
+    margin-bottom: 20px;
 }
 
-.movie-icon {
-    float: right
+.delete-icon {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .profile-title {
@@ -70,14 +71,12 @@
 .profile-box {
     height: 520px;
     width: 540px;
-    position: absolute;
     left: 82px;
 }
 
 .profile-label {
     font-size: 15px;
     color: #BEC2CC;
-    width: 207px;
     height: 24px;
 }
 
@@ -116,6 +115,7 @@
     justify-content: center;
     display: inline-flex;
     margin-bottom: 24px;
+    margin-right: 12px;
 }
 
 .password-input {
@@ -150,19 +150,17 @@
 }
 
 .delete-btn {
-    position: absolute;
-    margin-bottom: 50px;
-    margin-right: 82px;
-    bottom: 0;
-    right: 0;
     background-color: #1E2127;
     color: #828D99;
     font-size: 12px;
     border: 0;
     -webkit-appearance: none;
     align-items: center;
-    display: inline-block;
     justify-items: center;
-    width: 116px;
-    height: 20px;
+    float: right;
+    margin-top: 96px;
+}
+
+.passwords {
+    display: flex;
 }

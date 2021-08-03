@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Container from '@material-ui/core/Container';
 import { FiTrash } from 'react-icons/fi'
 import './profile-view.scss';
 import { connect } from 'react-redux';
@@ -101,8 +100,6 @@ export class ProfileView extends React.Component{
 
                 <div className="profile-title">Personal Info</div>      
 
-                <Container>
-
                     <div className="fav-box">
 
                         <div className="fav-title">My Favorite Movies</div>
@@ -111,23 +108,26 @@ export class ProfileView extends React.Component{
                                 return(
                                     <div className="movie-fav-box">
 
-                                        <Link to={`/movies/${movie._id}`}>
-                                            <div className="movie-title-link">{movie.Title}</div>
-                                        </Link>
+                                        <div className="fav-info">
+                                            
+                                            <div className="fav-movie-link">
+                                                <Link to={`/movies/${movie._id}`}>
+                                                    <div className="movie-title-link">{movie.Title}</div>
+                                                </Link>
+                                            </div>
 
-                                        <div className="movie-desc">{movie.Description}</div>   
-                                        
-                                        <div className="fav-icon" onClick={() => this.removeFavorite(movie)} ><FiTrash color="white"/></div>
+                                            <div className="movie-desc">{movie.Description}</div>   
+
+                                        </div>
+
+                                        <div className="delete-icon" onClick={() => this.removeFavorite(movie)} ><FiTrash color="white"/></div>
 
                                     </div>
                             )})}
                     </div>
 
-                </Container>
-
-                <Container>
-
                         <div onSubmit={e => this.handleUpdate(e)}>
+
                             <div className="profile-box">
 
                                 <div className="profile-label">Username</div>
@@ -147,14 +147,22 @@ export class ProfileView extends React.Component{
                                     <input className="password-input" type="password" placeholder="********"></input>
                                 </div>
 
-                                <div className="profile-label">New Password</div>
-                                <div className="password-control-box">
-                                    <input className="password-input" type="password" placeholder="********"></input>
-                                </div>
+                                <div className="passwords">
 
-                                <div className="profile-label">Repeat Password</div>
-                                <div className="password-control-box">
-                                    <input className="password-input" type="password" placeholder="********"></input>
+                                    <div className="new-password">
+                                        <div className="profile-label">New Password</div>
+                                        <div className="password-control-box">
+                                            <input className="password-input" type="password" placeholder="********"></input>
+                                        </div>
+                                    </div>
+
+                                    <div className="repeat-password">
+                                        <div className="profile-label">Repeat Password</div>
+                                        <div className="password-control-box">
+                                            <input className="password-input" type="password" placeholder="********"></input>
+                                        </div>
+                                    </div>
+
                                 </div>
                             
                                 {/* <div className="profile-label">Birthday</div>
@@ -164,12 +172,12 @@ export class ProfileView extends React.Component{
 
                         </div>
 
-                        <div><button onClick={(e) => this.deregister(e)} variant="submit" className='delete-btn'><FiTrash color="white"/>Delete Account</button></div>
+                        <button onClick={(e) => this.deregister(e)} variant="submit" className='delete-btn'><FiTrash color="white"/>Delete Account</button>
 
                     </div>
                     
 
-                </Container>
+            
             </div>
 
         )

@@ -34,7 +34,7 @@ export class MovieView extends React.Component{
            
             <div className="card">
 
-                <img className="movie-img" src={movie.ImagePath} />
+                <img className="movie-img" style={{backgroundImage: `url(${movie.ImagePath})` }} />
 
                 <div className="genre-title">{movie.Genre.Name}</div>
 
@@ -47,27 +47,32 @@ export class MovieView extends React.Component{
 
                 <div className="card-desc">{movie.Description}</div>
 
-                <div className="line"></div>
+                <div className="dir-line">
 
-                <div className="info-label">
-                    <div className="info-dir">DIRECTOR</div>
-                    <div className="info-gen">GENRE</div>
-                </div>
+                    <div className="info-links">
 
-                <div className="info-links">
-                    <Link to={`/genres/${movie.Genre.Name}`}>
-                        <div className="info-link">{movie.Genre.Name}</div>
-                    </Link>
-                    
-                    <Link to={`/directors/${movie.Director.Name}`}>
-                        <div className="info-link">{movie.Director.Name}</div>
-                    </Link>
-                </div>
+                        <div className="info-mv">DIRECTOR</div>
 
-                <div className="line"></div>
-                    
+                        <Link to={`/directors/${movie.Director.Name}`}>
+                            <div className="info-link">{movie.Director.Name}</div>
+                        </Link>
+
+                    </div>
+
+                    <div className="info-links">
+
+                        <div className="info-mv">GENRE</div>
+
+                        <Link to={`/genres/${movie.Genre.Name}`}>
+                            <div className="info-link">{movie.Genre.Name}</div>
+                        </Link>
+                        
+                    </div>
+
+                </div>    
+                        
                 <button className="close-btn" type="submit" onClick={()=>onBackClick()} >X</button>
-                    
+                        
             </div>
 
         )

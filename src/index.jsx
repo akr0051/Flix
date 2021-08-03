@@ -14,9 +14,7 @@ class FlixApplication extends React.Component{
     render(){
         return (
             <Provider store={store}>
-                {/* <Container> */}
                     <MainView />
-                {/* </Container> */}
             </Provider>
         );
     }

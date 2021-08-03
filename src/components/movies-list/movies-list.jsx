@@ -19,9 +19,10 @@ function MoviesList(props) {
     if (!movies) return <div className="main-view" />;
 
     return <>
-        <div>
+        
             <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-        </div>
+        
+        
         {filteredMovies.map(m => (
         <div>
             <MovieCard movie={m} />
