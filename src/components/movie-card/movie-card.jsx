@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaLongArrowAltRight } from 'react-icons/fa';
-import { Modal } from '../modal/modal';
-import { ModalLink } from 'react-router-modal-gallery';
 import './movie-card.scss'
 
 export class MovieCard extends React.Component {
