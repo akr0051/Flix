@@ -10,18 +10,18 @@ import './index.scss';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 const store = createStore(moviesApp, devToolsEnhancer());
-const HistoryMainView =withRouter((props) => <MainView { ...props} />)
+const HistoryMainView = withRouter((props) => <MainView {...props} />);
 
-class FlixApplication extends React.Component{
-    render(){
-        return (
-            <Provider store={store}>
-                <Router>
-                    <HistoryMainView />
-                </Router>
-            </Provider>
-        );
-    }
+class FlixApplication extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <HistoryMainView />
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 const container = document.getElementsByClassName('app-container')[0];

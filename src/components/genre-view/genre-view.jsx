@@ -4,42 +4,47 @@ import { MovieCard } from '../movie-card/movie-card';
 import './genre-view.scss';
 
 export class GenreView extends React.Component {
-    render () {
+  render() {
+    const { movies, genre, onBackClick } = this.props;
 
-        const { movies, genre, onBackClick } = this.props;
+    return (
+      <div className="card">
 
-        return (
-            <div className="card">
+        <div className="card-title">{genre.Name}</div>
 
-                    <div className="card-title">{genre.Name}</div>
+        <div className="card-label">DESCRIPTION</div>
+        <div className="card-desc">{genre.Description}</div>
 
-                    <div className="card-label">DESCRIPTION</div>
-                    <div className="card-desc">{genre.Description}</div>
+        <div className="line" />
 
-                    <div className="line"></div>
+        <div className="other-movies-label">
+          Other
+          {genre.Name}
+          {' '}
+          movies
+        </div>
 
-                    <div className="other-movies-label">Other {genre.Name} movies</div>
-
-                    <div>{
+        <div>
+          {
                         movies
-                            .filter((m) => m.Genre.Name === genre.Name)
-                            .map((m) => (
-                                <div className="sub-movie-list">
-                                    <MovieCard movie={m} />
-                                </div>
-                            ))
-                        }          
-                    </div> 
+                          .filter((m) => m.Genre.Name === genre.Name)
+                          .map((m) => (
+                            <div className="sub-movie-list">
+                              <MovieCard movie={m} />
+                            </div>
+                          ))
+                        }
+        </div>
 
-                    <button className="close-btn" onClick={()=>onBackClick()} type="submit">X</button>
+        <button className="close-btn" onClick={() => onBackClick()} type="submit">X</button>
 
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
 GenreView.propTypes = {
-    genre: PropTypes.shape({
-        Name: PropTypes.string.isRequired,
-    }).isRequired,
-}
+  genre: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+  }).isRequired,
+};
