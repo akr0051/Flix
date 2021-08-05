@@ -31,12 +31,10 @@ export class MovieCard extends React.Component {
                             
                             <div className="link">
                                 Read More
-                            
                             </div> 
                         
                         </div>
                     </Link>
-                    {/* <ModalLink to= {`/movies/${movie._id}`}>{movie.Title}</ModalLink> */}
                 
             </div>
         )

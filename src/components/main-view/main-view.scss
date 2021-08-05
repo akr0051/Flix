@@ -1,6 +1,4 @@
 .main-view {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     background-color: #1B1D24;
     justify-items: center;
     width: 100%;
@@ -11,16 +9,7 @@
     left:0;
 }    
 
-.movie-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 24px;
-    margin: 42px auto;
-    place-items: center;
-}
-
-#index-title > h1 {
-    margin-bottom: 0;
+.title {
     margin-right: 42px;
 }
 
@@ -32,7 +21,7 @@
     padding: 13px 31px;
     display: flex;
     align-items: center;
-    background-color: red;
+    background-color: #1E2127;
 }
 
 .logout-btn {
@@ -51,26 +40,23 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    position: sticky;
-    display: inline;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: left;
+    justify-content: left !important;
 }
 
-.nav-movies {
+.navbar a {
     font-size: 11px;
     color: #FFFFFF;
     display: block;
     text-align: center;
     float: left;
     padding: 30px;
-    border-bottom: 2px solid #0093FF;
+    border-bottom: 2px solid transparent;
 }
 
-.nav-account {
-    font-size: 11px;
-    color: #FFFFFF;
-    display: block;
-    text-align: center;
-    float: left;
-    padding: 30px;
-    // border-bottom: 2px solid #0093FF;
+.navbar a.--active {
+    border-bottom-color: #0093FF;
 }

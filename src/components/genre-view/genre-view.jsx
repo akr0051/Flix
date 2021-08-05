@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DirectorView } from '../director-view/director-view'
+import { MovieCard } from '../movie-card/movie-card';
 import './genre-view.scss';
 
 export class GenreView extends React.Component {
     render () {
 
-        const { director, genre, onBackClick } = this.props;
-
-        console.log(genre);
+        const { movies, genre, onBackClick } = this.props;
 
         return (
-            <div class="card">
+            <div className="card">
 
                     <div className="card-title">{genre.Name}</div>
 
@@ -22,16 +20,16 @@ export class GenreView extends React.Component {
 
                     <div className="other-movies-label">Other {genre.Name} movies</div>
 
-                    {/* <div>{movie.map((m) => {
-                        if (m.Genre.Name === genre.Name) {
-                            return (
-                            <div>
-                                <MovieCard movie={m} />
-                            </div>
-                            )
-                        }
-                    })}      
-                    </div> */}
+                    <div>{
+                        movies
+                            .filter((m) => m.Genre.Name === genre.Name)
+                            .map((m) => (
+                                <div className="sub-movie-list">
+                                    <MovieCard movie={m} />
+                                </div>
+                            ))
+                        }          
+                    </div> 
 
                     <button className="close-btn" onClick={()=>onBackClick()} type="submit">X</button>
 

@@ -6,7 +6,7 @@ import './director-view.scss';
 export class DirectorView extends React.Component {
     
     render () {
-        const { movie, director, onBackClick } = this.props;
+        const { movies, director, onBackClick } = this.props;
 
         return(
 
@@ -33,16 +33,16 @@ export class DirectorView extends React.Component {
 
                     <div className="other-movies-label">Other {director.Name} movies</div>
                     
-                    {/* <div>{movie.map((m) => {
-                        if (m.Director.Name === director.Name) {
-                            return (
-                            <div>
-                                <MovieCard movie={m} />
-                            </div>
-                            )
-                        }
-                    })}      
-                    </div> */}
+                    <div>{
+                        movies
+                            .filter((m) => m.Director.Name === director.Name)
+                            .map((m) => (
+                                <div className="sub-movie-list">
+                                    <MovieCard movie={m} />
+                                </div>
+                            ))
+                        }          
+                    </div> 
 
                     <button className="close-btn" type="submit" onClick={()=>onBackClick()} >X</button>
             </div>

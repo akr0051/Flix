@@ -548,8 +548,6 @@ textarea:focus, input:focus {
   display: flex;
 }
 .main-view {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   background-color: #1B1D24;
   justify-items: center;
   width: 100%;
@@ -560,15 +558,7 @@ textarea:focus, input:focus {
   left: 0;
 }
 
-.movie-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 24px;
-  margin: 42px auto;
-  place-items: center;
-}
-
-#index-title > h1 {
+#index-header > h1 {
   margin-bottom: 0;
   margin-right: 42px;
 }
@@ -600,27 +590,24 @@ textarea:focus, input:focus {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  position: sticky;
-  display: inline;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.nav-movies {
+.navbar a {
   font-size: 11px;
   color: #FFFFFF;
   display: block;
   text-align: center;
   float: left;
   padding: 30px;
-  border-bottom: 2px solid #0093FF;
+  border-bottom: 2px solid transparent;
 }
 
-.nav-account {
-  font-size: 11px;
-  color: #FFFFFF;
-  display: block;
-  text-align: center;
-  float: left;
-  padding: 30px;
+.navbar a.--action {
+  border-bottom-color: #0093FF;
 }
 html, body {
   background-color: #1B1D24;

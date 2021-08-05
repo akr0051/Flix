@@ -88,4 +88,4 @@ MovieView.propTypes = {
     }),
 }
 
-export default connect( { setProfile })(MovieView)
+export default connect( null, { setProfile })(MovieView)

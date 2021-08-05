@@ -4,17 +4,21 @@ import { createStore } from 'redux';
 import moviesApp from './reducers/reducers';
 import MainView from './components/main-view/main-view';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 
 import './index.scss';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
 const store = createStore(moviesApp, devToolsEnhancer());
+const HistoryMainView =withRouter((props) => <MainView { ...props} />)
 
 class FlixApplication extends React.Component{
     render(){
         return (
             <Provider store={store}>
-                    <MainView />
+                <Router>
+                    <HistoryMainView />
+                </Router>
             </Provider>
         );
     }

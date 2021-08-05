@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { setMovies, setProfile } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list.jsx';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
-import { MovieView } from '../movie-view/movie-view';
+import MovieView from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import ProfileView from '../profile-view/profile-view';
@@ -75,40 +75,32 @@ class MainView extends React.Component{
     }
 
     render() {
-        let { movies, user } = this.props;
+        let { movies, user, visibilityFilter, location } = this.props;
         console.log(movies); 
 
         return (
-            
-            <Router>
                
                 <div className="main-view">
 
                 <header className="index-header">
 
-                    <h1>Flix</h1>
+                    <h1 className="title">Flix</h1>
 
-                    {/* <div className="search-bar-box">
+                    <VisibilityFilterInput visibilityFilter={visibilityFilter}/>
 
-                        <div className="search-icon">
-                          <FaSearch className="search-icon" color="white"/>
-                        </div>
-                      
-                        <input className="searchbar" type="search"
-                          onChange={e => props.setFilter(e.target.value)}
-                          value={props.visibilityFilter}
-                          placeholder="Search..."
-                        />
-
-                    </div> */}
-
-                    <button className="logout-btn" onClick={() => { this.onLoggedOut() }}>LOGOUT</button>
+                    <button className="logout-btn" onClick={() => {
+                         this.onLoggedOut() }}>LOGOUT
+                    </button>
 
                 </header>
 
                 <div className="navbar">
-                    <Link to={`/users`} className="nav-account">ACCOUNT</Link>
-                    <Link to={`/`} className="nav-movies">MOVIES</Link>
+                    <Link to={`/users`} 
+                        className={`nav-account ${location.pathname == "/users" ? "--active" : "" }`}>ACCOUNT
+                    </Link>
+                    <Link to={`/`} 
+                        className={`nav-movies ${location.pathname == "/" ? "--active" : "" }`}>MOVIES
+                    </Link>
                 </div>
                 
                     <Route exact path="/" render={() => {
@@ -144,11 +136,11 @@ class MainView extends React.Component{
                     <Route path="/directors/:name" render={({ match, history }) => {
                         if (movies.length === 0) return <div className="main-view" />;
                         return (
-                    
-                            <div md={8}>
-                                <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
-                            </div>
-                        
+
+                                <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director}
+                                movies={movies}
+                                onBackClick={() => history.goBack()} />
+                            
                         )
                     }} />
 
@@ -167,12 +159,13 @@ class MainView extends React.Component{
                         if (movies.length === 0) return <div className="mainview" />;
                         return (
                             
-                            <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
+                            <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}
+                            movies={movies}
+                            onBackClick={() => history.goBack()} />
                             
                         )        
                     }} />
-                </div>
-            </Router>   
+                </div>  
             );
     }
         
@@ -181,7 +174,8 @@ class MainView extends React.Component{
 let mapStateToProps = state => {
     return {
         movies: state.movies,
-        user: state.user
+        user: state.user,
+        visibilityFilter: state.visibilityFilter,
     }
 }
         
