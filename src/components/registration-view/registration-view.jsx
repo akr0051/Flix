@@ -65,14 +65,14 @@ export function RegistrationView() {
             </div>
 
             <div className="input-control-box">    
-                <input className="input-control" placeholder="Enter your password" type="text" onChange={e =>setPassword(e.target.value)} />
+                <input className="input-control" placeholder="Enter your password" type="password" onChange={e =>setPassword(e.target.value)} />
                 <BiLockAlt color="white"/>
             </div>
 
             <div className="blank-label"></div>
             
             <div className="input-control-box">
-                <input className="input-control" placeholder="Enter your password again" type="text" onChange={e =>setPassword(e.target.value)} />
+                <input className="input-control" placeholder="Enter your password again" type="password" onChange={e =>setPassword(e.target.value)} />
             </div>
 
             {/* <div controlId="formBirthday">
