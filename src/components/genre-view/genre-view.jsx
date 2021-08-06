@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MovieCard } from '../movie-card/movie-card';
-import './genre-view.scss';
+import { MovieSubCard } from '../movie-sub-card/movie-sub-card';
 
 export class GenreView extends React.Component {
   render() {
@@ -18,19 +17,19 @@ export class GenreView extends React.Component {
         <div className="line" />
 
         <div className="other-movies-label">
-          Other
+          Other {' '}
           {genre.Name}
           {' '}
           movies
         </div>
 
-        <div>
+        <div className="movie-sub-list-grid">
           {
                         movies
                           .filter((m) => m.Genre.Name === genre.Name)
                           .map((m) => (
-                            <div className="sub-movie-list">
-                              <MovieCard movie={m} />
+                            <div>
+                              <MovieSubCard movie={m} />
                             </div>
                           ))
                         }

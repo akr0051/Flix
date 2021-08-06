@@ -349,7 +349,6 @@ textarea:focus, input:focus {
   color: #FFFFFF;
   font-size: 20px;
   margin-top: 46px;
-  margin-bottom: 38px;
   margin-left: 82px;
 }
 
@@ -365,11 +364,34 @@ textarea:focus, input:focus {
   -webkit-appearance: none;
   border-radius: 200px;
 }
-
-.sub-movie-card {
-  width: 50px !important;
+.movie-sub-card-img {
+  width: 140px;
+  height: 207px;
 }
 
+.movie-sub-card-title {
+  font-size: 11px;
+  width: 140px;
+  color: #FFFFFF;
+  margin-top: 11px;
+}
+
+.movie-sub-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 24px;
+  margin: 24px auto;
+  place-items: center;
+}
+
+.movie-sub-card {
+  flex-direction: column;
+  display: flex;
+  padding: 36px;
+  box-sizing: border-box;
+  max-width: 400px;
+  border-radius: 5px;
+}
 .profile-bg {
   width: 1128px;
   height: 789px;

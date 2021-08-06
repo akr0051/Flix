@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MovieCard } from '../movie-card/movie-card';
+import { MovieSubCard } from '../movie-sub-card/movie-sub-card';
 import './director-view.scss';
 
 export class DirectorView extends React.Component {
@@ -32,18 +32,19 @@ export class DirectorView extends React.Component {
 
         <div className="other-movies-label">
           Other
+          {' '}
           {director.Name}
           {' '}
           movies
         </div>
 
-        <div>
+        <div className="movie-sub-list-grid">
           {
                         movies
                           .filter((m) => m.Director.Name === director.Name)
                           .map((m) => (
-                            <div className="sub-movie-list">
-                              <MovieCard movie={m} />
+                            <div>
+                              <MovieSubCard movie={m} />
                             </div>
                           ))
                         }

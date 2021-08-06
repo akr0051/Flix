@@ -10,7 +10,6 @@ import MovieView from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import ProfileView from '../profile-view/profile-view';
-
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import './main-view.scss';
 
