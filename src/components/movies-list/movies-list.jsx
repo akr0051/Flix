@@ -23,7 +23,7 @@ function MoviesList(props) {
     <div className="movie-list-grid">
 
       {filteredMovies.map((m) => (
-        <div>
+        <div key={m._id}>
           <MovieCard movie={m} />
         </div>
       ))}

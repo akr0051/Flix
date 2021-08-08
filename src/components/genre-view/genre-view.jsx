@@ -28,7 +28,7 @@ export class GenreView extends React.Component {
                         movies
                           .filter((m) => m.Genre.Name === genre.Name)
                           .map((m) => (
-                            <div>
+                            <div key={m}>
                               <MovieSubCard movie={m} />
                             </div>
                           ))

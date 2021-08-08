@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { Route, Redirect, Link } from 'react-router-dom';
 import { setMovies, setProfile } from '../../actions/actions';
-import MoviesList from '../movies-list/movies-list.jsx';
+import MoviesList from '../movies-list/movies-list';
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import MovieView from '../movie-view/movie-view';
@@ -23,7 +23,6 @@ class MainView extends React.Component {
 
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
-    console.log(accessToken);
     if (accessToken !== null) {
       this.getUser(accessToken);
       this.getMovies(accessToken);
@@ -35,16 +34,13 @@ class MainView extends React.Component {
     axios.get(url, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         this.props.setProfile(response.data);
-        console.log('getUser', response.data);
       })
       .catch((error) => {
         alert('Error. Try again.');
-        console.log(error);
       });
   }
 
   onLoggedIn(authData) {
-    console.log(authData);
     this.props.setProfile(authData.user);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
@@ -66,7 +62,6 @@ class MainView extends React.Component {
         this.props.setMovies(response.data);
       })
       .catch((error) => {
-        console.log(error);
       });
   }
 
@@ -74,7 +69,6 @@ class MainView extends React.Component {
     const {
       movies, user, visibilityFilter, location,
     } = this.props;
-    console.log(movies);
 
     return (
 
@@ -116,7 +110,6 @@ class MainView extends React.Component {
           exact
           path="/"
           render={() => {
-            console.log('login', user, !user);
             if (!user) {
               return (
 

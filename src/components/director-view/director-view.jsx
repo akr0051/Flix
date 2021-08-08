@@ -43,7 +43,7 @@ export class DirectorView extends React.Component {
                         movies
                           .filter((m) => m.Director.Name === director.Name)
                           .map((m) => (
-                            <div>
+                            <div key={m}>
                               <MovieSubCard movie={m} />
                             </div>
                           ))
